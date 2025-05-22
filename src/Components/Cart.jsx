@@ -1,9 +1,10 @@
-function Sidebar() {
+function Cart() {
     return (
         <div>
+            
             
         </div>
     )
 }
 
-export default Sidebar
+export default Cart
