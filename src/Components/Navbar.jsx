@@ -1,14 +1,39 @@
+import { useState } from "react";
+//eslint-disable-next-line
+import { motion } from "motion/react";
+const menuVarians = {
+  open: {},
+  close: {},
+};
+
+const menuItemVarians1 = {
+  open: { width: 16 },
+  closed: { width: 2 },
+};
+
+const menuItemVarians2 = {
+  open: { x: -4 },
+  closed: { x: 0 },
+};
+
+const menuItemVarians3 = {
+  open: { width: 8, x: -8 },
+  closed: { width: 4, x: 0 },
+};
+
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav className="grid mr-11 items-center justify-between grid-cols-[40%_40%] text-center py-4 ">
-      <div className="flex gap-2 items-center">
+    <nav className="justify-between items-center grid grid-cols-[40%_40%] 320px:grid-cols-[5%_95%] 320px:mx-2 mr-11 py-4 text-center">
+      <div className="320px:hidden flex items-center gap-2">
         <input
-          className="bg-[#ececec9d] py-2  w-[60%] rounded-xl px-4 focus:w-[90%] transition-all focus:ring-[#FABB18] focus:ring-1 focus:ring-offset-2 focus:outline-0"
+          className="bg-[#ececec9d] px-4 py-2 rounded-xl focus:outline-0 focus:ring-[#FABB18] focus:ring-1 focus:ring-offset-2 w-[60%] focus:w-[90%] transition-all"
           type="text"
           placeholder="جستجو فعالیت..."
         />
-        <span className="p-2.5 relative rounded-xl hover:scale-90 transition-all overflow-hidden bg-amber-300">
-          <span className="absolute w-34 h-full bg-linear-150 from-[#fff0]b from-33% rounded-xl top-0 hover:-right-25 transition-all right-0 via-[#ffffff7c] via-45% to-[#fff0] to-58%"></span>
+        <span className="relative bg-amber-300 p-2.5 rounded-xl overflow-hidden hover:scale-90 transition-all">
+          <span className="top-0 right-0 hover:-right-25 absolute bg-linear-150 from-[#fff0]b from-33% via-[#ffffff7c] via-45% to-[#fff0] to-58% rounded-xl w-34 h-full transition-all"></span>
           <svg
             width="16"
             height="18"
@@ -30,9 +55,37 @@ function Navbar() {
           </svg>
         </span>
       </div>
-      <div className="flex gap-5 items-center justify-end ">
-        <span className="ml-4">
+
+      <motion.div
+        className="z-10 flex flex-col space-y-0.5 mr-4 w-fit"
+        variants={menuVarians}
+        animate={isOpen ? "open" : "close"}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <motion.span
+          className="bg-black rounded-3xl w-2 h-0.5"
+          variants={menuItemVarians1}
+        ></motion.span>
+        <motion.span
+          className="bg-black rounded-3xl w-3 h-0.5"
+          variants={menuItemVarians2}
+        ></motion.span>
+        <motion.span
+          className="bg-black rounded-3xl w-4 h-0.5"
+          variants={menuItemVarians3}
+        ></motion.span>
+      </motion.div>
+
+      <div className="flex justify-end items-center gap-5 320px:gap-3">
+        <motion.span
+          className="ml-4 320px:ml-2"
+          initial={{ rotate: 0, transformOrigin: "top" }}
+          whileHover={{
+            rotate: [-15, 15, -15, 0],
+          }}
+        >
           <svg
+            className="320px:w-4"
             width="22"
             height="22"
             viewBox="0 0 28 28"
@@ -48,12 +101,13 @@ function Navbar() {
               fill="black"
             />
           </svg>
+        </motion.span>
+
+        <span className="text-left">
+          <h3 className="320px:text-sm">Mohammad Ghadimi</h3>
+          <p className="text-[#8F8F8F] text-[13px] 320px:text-xs">طراح ui</p>
         </span>
-        <span className=" text-left">
-          <h3 className=" text-l ">Mohammad Ghadimi</h3>
-          <p className="text-[#8F8F8F] text-[13px]">طراح ui</p>
-        </span>
-        <span className=" overflow-hidden text-center  w-[50px] rounded-full  h-[50px] bg-[#FABB18] ml-5 ">
+        <span className="bg-[#FABB18] ml-5 320px:ml-2 rounded-full w-[50px] 320px:w-[35px] h-[50px] 320px:h-[35px] overflow-hidden text-center">
           <img src="../assets/mg 1 (1).png"></img>
         </span>
       </div>

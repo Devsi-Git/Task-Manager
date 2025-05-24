@@ -1,10 +1,26 @@
 import SideBtn from "./SideBtn";
+// eslint-disable-next-line
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { x: 100, opacity: 0 },
+  visible: { x: 0, opacity: 1 },
+};
 
 function Sidebar() {
   return (
-    <aside className="pl-7 flex pt-7 pr-9 flex-col items-center gap-5">
+    <aside className="320px:top-0 320px:right-0 320px:fixed flex flex-col justify-center items-center gap-5 320px:bg-amber-50 320px:p-7 pt-7 pr-9 pl-7 w-full 320px:w-full 320px:h-full">
       <svg
-        className=" mb-9"
+        className="mb-9"
         width="131"
         height="27"
         viewBox="0 0 131 27"
@@ -20,159 +36,176 @@ function Sidebar() {
           fill="#FABB18"
         />
       </svg>
-
-      <SideBtn
-        active={1}
-        icon={
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 26 26"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect width="11.375" height="6.5" rx="1.5" fill="#FABB18" />
-            <rect
-              x="14.625"
-              y="19.5"
-              width="11.375"
-              height="6.5"
-              rx="1.5"
-              fill="#FABB18"
-            />
-            <rect
-              y="9.75"
-              width="11.375"
-              height="16.25"
-              rx="1.5"
-              fill="white"
-            />
-            <rect
-              x="14.625"
-              width="11.375"
-              height="16.25"
-              rx="1.5"
-              fill="white"
-            />
-          </svg>
-        }
+      <motion.div
+        className="flex flex-col items-center gap-5"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
       >
-        داشبورد
-      </SideBtn>
-
-      <SideBtn
-        icon={
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 26 26"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+        <motion.div variants={itemVariants}>
+          <SideBtn
+            active={1}
+            icon={
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 26 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="11.375" height="6.5" rx="1.5" fill="#FABB18" />
+                <rect
+                  x="14.625"
+                  y="19.5"
+                  width="11.375"
+                  height="6.5"
+                  rx="1.5"
+                  fill="#FABB18"
+                />
+                <rect
+                  y="9.75"
+                  width="11.375"
+                  height="16.25"
+                  rx="1.5"
+                  fill="white"
+                />
+                <rect
+                  x="14.625"
+                  width="11.375"
+                  height="16.25"
+                  rx="1.5"
+                  fill="white"
+                />
+              </svg>
+            }
           >
-            <rect width="11.375" height="6.5" rx="1.5" fill="#FABB18" />
-            <rect
-              x="14.625"
-              y="19.5"
-              width="11.375"
-              height="6.5"
-              rx="1.5"
-              fill="#FABB18"
-            />
-            <rect
-              y="9.75"
-              width="11.375"
-              height="16.25"
-              rx="1.5"
-              fill="white"
-            />
-            <rect
-              x="14.625"
-              width="11.375"
-              height="16.25"
-              rx="1.5"
-              fill="white"
-            />
-          </svg>
-        }
-      >
-        داشبورد
-      </SideBtn>
+            داشبورد
+          </SideBtn>
+        </motion.div>
 
-      <SideBtn
-        icon={
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 26 26"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+        <motion.div variants={itemVariants}>
+          <SideBtn
+            active={0}
+            icon={
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 26 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="11.375" height="6.5" rx="1.5" fill="#FABB18" />
+                <rect
+                  x="14.625"
+                  y="19.5"
+                  width="11.375"
+                  height="6.5"
+                  rx="1.5"
+                  fill="#FABB18"
+                />
+                <rect
+                  y="9.75"
+                  width="11.375"
+                  height="16.25"
+                  rx="1.5"
+                  fill="white"
+                />
+                <rect
+                  x="14.625"
+                  width="11.375"
+                  height="16.25"
+                  rx="1.5"
+                  fill="white"
+                />
+              </svg>
+            }
           >
-            <rect width="11.375" height="6.5" rx="1.5" fill="#FABB18" />
-            <rect
-              x="14.625"
-              y="19.5"
-              width="11.375"
-              height="6.5"
-              rx="1.5"
-              fill="#FABB18"
-            />
-            <rect
-              y="9.75"
-              width="11.375"
-              height="16.25"
-              rx="1.5"
-              fill="white"
-            />
-            <rect
-              x="14.625"
-              width="11.375"
-              height="16.25"
-              rx="1.5"
-              fill="white"
-            />
-          </svg>
-        }
-      >
-        داشبورد
-      </SideBtn>
+            داشبورد
+          </SideBtn>
+        </motion.div>
 
-      <SideBtn
-        icon={
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 26 26"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+        <motion.div variants={itemVariants}>
+          <SideBtn
+            active={0}
+            icon={
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 26 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="11.375" height="6.5" rx="1.5" fill="#FABB18" />
+                <rect
+                  x="14.625"
+                  y="19.5"
+                  width="11.375"
+                  height="6.5"
+                  rx="1.5"
+                  fill="#FABB18"
+                />
+                <rect
+                  y="9.75"
+                  width="11.375"
+                  height="16.25"
+                  rx="1.5"
+                  fill="white"
+                />
+                <rect
+                  x="14.625"
+                  width="11.375"
+                  height="16.25"
+                  rx="1.5"
+                  fill="white"
+                />
+              </svg>
+            }
           >
-            <rect width="11.375" height="6.5" rx="1.5" fill="#FABB18" />
-            <rect
-              x="14.625"
-              y="19.5"
-              width="11.375"
-              height="6.5"
-              rx="1.5"
-              fill="#FABB18"
-            />
-            <rect
-              y="9.75"
-              width="11.375"
-              height="16.25"
-              rx="1.5"
-              fill="white"
-            />
-            <rect
-              x="14.625"
-              width="11.375"
-              height="16.25"
-              rx="1.5"
-              fill="white"
-            />
-          </svg>
-        }
-      >
-        داشبورد
-      </SideBtn>
+            داشبورد
+          </SideBtn>
+        </motion.div>
+
+        <motion.div variants={itemVariants}>
+          <SideBtn
+            active={0}
+            icon={
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 26 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="11.375" height="6.5" rx="1.5" fill="#FABB18" />
+                <rect
+                  x="14.625"
+                  y="19.5"
+                  width="11.375"
+                  height="6.5"
+                  rx="1.5"
+                  fill="#FABB18"
+                />
+                <rect
+                  y="9.75"
+                  width="11.375"
+                  height="16.25"
+                  rx="1.5"
+                  fill="white"
+                />
+                <rect
+                  x="14.625"
+                  width="11.375"
+                  height="16.25"
+                  rx="1.5"
+                  fill="white"
+                />
+              </svg>
+            }
+          >
+            داشبورد
+          </SideBtn>
+        </motion.div>
+      </motion.div>
     </aside>
   );
 }

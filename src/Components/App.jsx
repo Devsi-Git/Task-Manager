@@ -3,10 +3,9 @@ import Container from "./Container";
 
 function App() {
   return (
-    <div className="flex flex-row-reverse font-vazir
-    ">
-      <Container></Container>
-      <Sidebar />
+    <div className="flex flex-row-reverse mx-auto max-w-[1264px] font-vazir">
+      <Container/>
+      {/* <Sidebar /> */}
     </div>
   );
 }
