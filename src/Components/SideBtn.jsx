@@ -2,9 +2,9 @@
 import { motion } from "motion/react";
 
 function SideBtn({ children, icon, active }) {
-  const styles = `cursor-pointer 320:w-40 740:w-fit 740:px-4 740:py-2 740:text-sm flex justify-center relative hover:shadow-[7px_6px_10px_#0000002f] ${
+  const styles = `cursor-pointer 320:w-40 740:w-fit 740:px-4 740:py-2 740:text-sm 990:text-base flex justify-center relative hover:shadow-[7px_6px_10px_#0000002f] ${
     active ? "  bg-[#F3F3F3] text-black " : "bg-black text-amber-50"
-  } transition-all overflow-hidden rounded-xl px-6 items-center py-3 flex-row-reverse gap-5`;
+  } transition-all overflow-hidden rounded-xl 990:px-5 items-center 990:py-2.5 1020:px-6 1020:py-3 flex-row-reverse gap-3`;
   return (
     <button className={styles}>
       {children}

@@ -58,7 +58,7 @@ function TaskSection({ children }) {
           </svg>
         </span>
       </span>
-      <div className="gap-3 grid 320:grid-cols-[200px_200px_200px] 740:grid-cols-1 overflow-x-scroll">
+      <div className="gap-3 grid 320:grid-cols-[200px_200px_200px] 740:grid-cols-1 max-740:overflow-x-scroll">
         <motion.span variants={itemVarians}>
           <Cart />
         </motion.span>

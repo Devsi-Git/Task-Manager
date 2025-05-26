@@ -9,7 +9,7 @@ function Container() {
         <header>
           <h2 className="mr-3 mb-5 320:text-sm 740:text-base">اماده ای همه تسک هارو بترکونی؟ 😍</h2>
         </header>
-        <section className="gap-5 grid grid-cols-3 320:grid-cols-1 740:grid-cols-2">
+        <section className="gap-3 1020:gap-5 grid 320:grid-cols-1 740:grid-cols-2 990:grid-cols-3">
           <TaskSection>برای انجام</TaskSection>
           <TaskSection>درحال انجام</TaskSection>
           <TaskSection>انجام شده</TaskSection>

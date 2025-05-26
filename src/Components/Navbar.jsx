@@ -25,7 +25,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="justify-between items-center grid 320:grid-cols-[5%_95%] 640:grid-cols-[10%_50%_40%] 740:grid-cols-[40%_50%] 320:mx-2 740:mr-11 py-4 text-center">
+    <nav className="justify-between items-center grid 320:grid-cols-[5%_95%] 600:grid-cols-[10%_50%_40%] 740:grid-cols-[55%_45%] 320:mx-2 740:mr-8 py-4 text-center">
       <motion.div
         className="740:hidden z-10 flex flex-col space-y-0.5 bg-amber-300 mr-4 p-[7px] rounded-xl w-fit"
         variants={menuVarians}
@@ -46,16 +46,16 @@ function Navbar() {
         ></motion.span>
       </motion.div>
 
-      <div className="320:hidden 640:flex items-center 740:gap-2">
+      <div className="320:hidden 600:flex items-center 740:gap-2">
         <input
-          className="bg-[#ececec9d] 640:px-2 740:px-4 640:py-1 740:py-2 rounded-xl focus:outline-0 focus:ring-[#FABB18] focus:ring-1 focus:ring-offset-2 w-[60%] focus:w-[90%] 640:placeholder:text-sm 740:placeholder:text-base transition-all"
+          className="bg-[#ececec9d] 990:mr-2 600:px-2 740:px-4 600:py-1 740:py-2 rounded-xl focus:outline-0 focus:ring-[#FABB18] focus:ring-1 focus:ring-offset-2 w-[60%] 740:focus:w-[100%] 740:w-[74%] focus:w-[80%] 600:placeholder:text-sm 740:placeholder:text-base transition-all"
           type="text"
           placeholder="جستجو فعالیت..."
         />
-        <span className="640:left-7 740:left-0 relative bg-amber-300 740:p-2.5 640:px-2 640:py-1.5 rounded-xl overflow-hidden hover:scale-90 transition-all">
+        <span className="600:left-7 740:left-10 990:left-0 relative bg-amber-300 740:p-2.5 600:px-2 600:py-1.5 rounded-xl overflow-hidden hover:scale-90 transition-all">
           <span className="top-0 right-0 hover:-right-25 absolute bg-linear-150 from-[#fff0] from-33% via-[#ffffff7c] via-45% to-[#fff0] to-58% rounded-xl w-34 h-full transition-all"></span>
           <svg
-            className="640:w-3 740:w-3.5"
+            className="600:w-3 740:w-3.5"
             width="16"
             height="18"
             viewBox="0 0 18 20"
@@ -77,7 +77,7 @@ function Navbar() {
         </span>
       </div>
 
-      <div className="flex justify-end items-center 320:gap-3 640:gap-5">
+      <div className="flex justify-end items-center gap-3">
         <motion.span
           className="320:ml-2 640:ml-4"
           initial={{ rotate: 0, transformOrigin: "top" }}
@@ -86,7 +86,7 @@ function Navbar() {
           }}
         >
           <svg
-            className="320:w-4 740:w-5"
+            className="320:w-4 740:w-4.5 990:w-5"
             width="22"
             height="22"
             viewBox="0 0 28 28"
@@ -105,10 +105,12 @@ function Navbar() {
         </motion.span>
 
         <span className="text-left">
-          <h3 className="320:text-sm 740:text-base">Mohammad Ghadimi</h3>
+          <h3 className="320:text-sm 740:text-base text-nowrap">
+            Mohammad Ghadimi
+          </h3>
           <p className="text-[#8F8F8F] 740:text-[13px] 320:text-xs">طراح ui</p>
         </span>
-        <span className="bg-[#FABB18] 320:ml-2 740:ml-5 rounded-full 320:w-[35px] 740:w-[50px] 320:h-[35px] 740:h-[50px] overflow-hidden text-center">
+        <span className="bg-[#FABB18] 320:ml-2 740:ml-0 990:ml-5 rounded-full 320:w-[35px] 740:w-[45px] 990:w-[50px] 320:h-[35px] 740:h-[45px] 990:h-[50px] overflow-hidden text-center">
           <img src="../assets/mg 1 (1).png"></img>
         </span>
       </div>

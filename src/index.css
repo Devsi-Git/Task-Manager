@@ -8,6 +8,9 @@
 
 @theme {
     --breakpoint-320: 320px;
+    --breakpoint-600: 600px;
     --breakpoint-640: 640px;
     --breakpoint-740: 740px;
+    --breakpoint-990: 990px;
+    --breakpoint-1020: 1020px;
 }
