@@ -7,7 +7,7 @@
 
 
 @theme {
-    --breakpoint-320px: 320px;
-    --breakpoint-2xl: 100rem;
-    --breakpoint-3xl: 120rem;
+    --breakpoint-320: 320px;
+    --breakpoint-640: 640px;
+    --breakpoint-740: 740px;
 }

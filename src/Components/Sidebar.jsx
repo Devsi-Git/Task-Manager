@@ -18,10 +18,10 @@ const itemVariants = {
 
 function Sidebar() {
   return (
-    <aside className="320px:top-0 320px:right-0 320px:fixed flex flex-col justify-center items-center gap-5 320px:bg-amber-50 320px:p-7 pt-7 pr-9 pl-7 w-full 320px:w-full 320px:h-full">
+    <aside className="top-0 right-0 320:fixed 740:relative flex flex-col justify-center items-center gap-5 320:bg-amber-50 740:bg-white 320:p-7 740:pt-7 740:pr-5 740:pl-4 320:w-full 740:w-fit 320:h-full">
       <svg
         className="mb-9"
-        width="131"
+        width="110"
         height="27"
         viewBox="0 0 131 27"
         fill="none"
@@ -47,8 +47,8 @@ function Sidebar() {
             active={1}
             icon={
               <svg
-                width="26"
-                height="26"
+                width="22"
+                height="22"
                 viewBox="0 0 26 26"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -88,8 +88,8 @@ function Sidebar() {
             active={0}
             icon={
               <svg
-                width="26"
-                height="26"
+                width="22"
+                height="22"
                 viewBox="0 0 26 26"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -129,8 +129,8 @@ function Sidebar() {
             active={0}
             icon={
               <svg
-                width="26"
-                height="26"
+                width="22"
+                height="22"
                 viewBox="0 0 26 26"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -170,8 +170,8 @@ function Sidebar() {
             active={0}
             icon={
               <svg
-                width="26"
-                height="26"
+                width="22"
+                height="22"
                 viewBox="0 0 26 26"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
