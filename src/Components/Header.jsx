@@ -21,11 +21,11 @@ const menuItemVarians3 = {
   closed: { width: 4, x: 0 },
 };
 
-function Navbar() {
+function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="justify-between items-center grid 320:grid-cols-[5%_95%] 600:grid-cols-[10%_50%_40%] 740:grid-cols-[55%_45%] 320:mx-2 740:mr-8 py-4 text-center">
+    <header className="justify-between items-center grid 320:grid-cols-[5%_95%] 600:grid-cols-[10%_50%_40%] 740:grid-cols-[55%_45%] 320:mx-2 740:mr-8 py-4 text-center">
       <motion.div
         className="740:hidden z-10 flex flex-col space-y-0.5 bg-amber-300 mr-4 p-[7px] rounded-xl w-fit"
         variants={menuVarians}
@@ -114,8 +114,8 @@ function Navbar() {
           <img src="../assets/mg 1 (1).png"></img>
         </span>
       </div>
-    </nav>
+    </header>
   );
 }
 
-export default Navbar;
+export default Header;

@@ -36,13 +36,13 @@ function Sidebar() {
           fill="#FABB18"
         />
       </svg>
-      <motion.div
+      <motion.nav
         className="flex flex-col items-center gap-5"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={itemVariants}>
+        <motion.li className="list-none" variants={itemVariants}>
           <SideBtn
             active={1}
             icon={
@@ -81,9 +81,9 @@ function Sidebar() {
           >
             داشبورد
           </SideBtn>
-        </motion.div>
+        </motion.li>
 
-        <motion.div variants={itemVariants}>
+        <motion.li className="list-none" variants={itemVariants}>
           <SideBtn
             active={0}
             icon={
@@ -122,9 +122,9 @@ function Sidebar() {
           >
             داشبورد
           </SideBtn>
-        </motion.div>
+        </motion.li>
 
-        <motion.div variants={itemVariants}>
+        <motion.li className="list-none" variants={itemVariants}>
           <SideBtn
             active={0}
             icon={
@@ -163,9 +163,9 @@ function Sidebar() {
           >
             داشبورد
           </SideBtn>
-        </motion.div>
+        </motion.li>
 
-        <motion.div variants={itemVariants}>
+        <motion.li className="list-none" variants={itemVariants}>
           <SideBtn
             active={0}
             icon={
@@ -204,8 +204,8 @@ function Sidebar() {
           >
             داشبورد
           </SideBtn>
-        </motion.div>
-      </motion.div>
+        </motion.li>
+      </motion.nav>
     </aside>
   );
 }
