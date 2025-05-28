@@ -1,6 +1,10 @@
+import { RxDashboard } from "react-icons/rx";
 import SideBtn from "./SideBtn";
 // eslint-disable-next-line
 import { motion } from "framer-motion";
+import { MdMiscellaneousServices } from "react-icons/md";
+import { IoIosLogIn } from "react-icons/io";
+import { IoSettingsOutline } from "react-icons/io5";
 
 const containerVariants = {
   hidden: {},
@@ -44,125 +48,20 @@ function Sidebar() {
         animate="visible"
       >
         <motion.li className="list-none" variants={itemVariants}>
-          <SideBtn
-            to="home"
-            icon={
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 26 26"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="11.375" height="6.5" rx="1.5" fill="#FABB18" />
-                <rect
-                  x="14.625"
-                  y="19.5"
-                  width="11.375"
-                  height="6.5"
-                  rx="1.5"
-                  fill="#FABB18"
-                />
-                <rect
-                  y="9.75"
-                  width="11.375"
-                  height="16.25"
-                  rx="1.5"
-                  fill="white"
-                />
-                <rect
-                  x="14.625"
-                  width="11.375"
-                  height="16.25"
-                  rx="1.5"
-                  fill="white"
-                />
-              </svg>
-            }
-          >
+          <SideBtn to="home" icon={<RxDashboard />}>
             داشبورد
           </SideBtn>
         </motion.li>
 
         <motion.li className="list-none" variants={itemVariants}>
-          <SideBtn
-            to="login"
-            icon={
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 26 26"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="11.375" height="6.5" rx="1.5" fill="#FABB18" />
-                <rect
-                  x="14.625"
-                  y="19.5"
-                  width="11.375"
-                  height="6.5"
-                  rx="1.5"
-                  fill="#FABB18"
-                />
-                <rect
-                  y="9.75"
-                  width="11.375"
-                  height="16.25"
-                  rx="1.5"
-                  fill="white"
-                />
-                <rect
-                  x="14.625"
-                  width="11.375"
-                  height="16.25"
-                  rx="1.5"
-                  fill="white"
-                />
-              </svg>
-            }
-          >
+          <SideBtn to="login" icon={<IoIosLogIn />}>
             ثبت نام
           </SideBtn>
         </motion.li>
 
         <motion.li className="list-none" variants={itemVariants}>
-          <SideBtn
-            to="/"
-            icon={
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 26 26"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="11.375" height="6.5" rx="1.5" fill="#FABB18" />
-                <rect
-                  x="14.625"
-                  y="19.5"
-                  width="11.375"
-                  height="6.5"
-                  rx="1.5"
-                  fill="#FABB18"
-                />
-                <rect
-                  y="9.75"
-                  width="11.375"
-                  height="16.25"
-                  rx="1.5"
-                  fill="white"
-                />
-                <rect
-                  x="14.625"
-                  width="11.375"
-                  height="16.25"
-                  rx="1.5"
-                  fill="white"
-                />
-              </svg>
-            }
-          >
-            خدمات
+          <SideBtn to="settings" icon={<IoSettingsOutline />}>
+            تنظیمات
           </SideBtn>
         </motion.li>
       </motion.nav>
