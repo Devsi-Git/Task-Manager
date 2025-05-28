@@ -44,7 +44,6 @@ function Sidebar() {
       >
         <motion.li className="list-none" variants={itemVariants}>
           <SideBtn
-            active={1}
             icon={
               <svg
                 width="22"
@@ -85,7 +84,6 @@ function Sidebar() {
 
         <motion.li className="list-none" variants={itemVariants}>
           <SideBtn
-            active={0}
             icon={
               <svg
                 width="22"
@@ -126,7 +124,6 @@ function Sidebar() {
 
         <motion.li className="list-none" variants={itemVariants}>
           <SideBtn
-            active={0}
             icon={
               <svg
                 width="22"
@@ -167,7 +164,6 @@ function Sidebar() {
 
         <motion.li className="list-none" variants={itemVariants}>
           <SideBtn
-            active={0}
             icon={
               <svg
                 width="22"
