@@ -78,6 +78,7 @@ function Sidebar() {
               </svg>
             }
           >
+            
             داشبورد
           </SideBtn>
         </motion.li>
