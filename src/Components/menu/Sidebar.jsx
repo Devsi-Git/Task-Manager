@@ -1,8 +1,7 @@
-import { RxDashboard } from "react-icons/rx";
 import SideBtn from "./SideBtn";
 // eslint-disable-next-line
 import { motion } from "framer-motion";
-import { MdMiscellaneousServices } from "react-icons/md";
+import { RxDashboard } from "react-icons/rx";
 import { IoIosLogIn } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
 

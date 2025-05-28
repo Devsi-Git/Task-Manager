@@ -1,4 +1,4 @@
-import Container from "../Components/Container";
+import Container from "../Components/home/Container";
 
 function Home() {
   return <Container />;
