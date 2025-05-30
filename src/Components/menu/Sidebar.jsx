@@ -21,7 +21,7 @@ const itemVariants = {
 
 function Sidebar() {
   return (
-    <aside className="max-740:hidden top-0 right-0 320:fixed 740:relative flex flex-col justify-center items-center gap-5 320:bg-amber-50 740:bg-white p-7 1020:px-7 740:px-4 320:w-full 740:w-fit 320:h-full">
+    <aside className="max-740:hidden top-0 right-0 sticky flex flex-col justify-center items-center gap-5 320:bg-amber-50 740:bg-white p-7 1020:px-7 740:px-4 320:w-full 740:w-fit 320:h-full">
       <svg
         className="mb-9 1020:w-31"
         width="110"
