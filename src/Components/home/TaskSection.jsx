@@ -12,7 +12,7 @@ const containerVarians = {
 };
 
 const itemVarians = {
-  hidden: { y: 300, opacity: 0 },
+  hidden: { y: 200, opacity: 0 },
   visiable: {
     y: 0,
     opacity: 1,

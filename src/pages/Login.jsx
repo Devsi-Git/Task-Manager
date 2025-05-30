@@ -4,7 +4,7 @@ import Input from "../Components/login/Input";
 import Btn from "../Components/login/Btn";
 function Login() {
   return (
-    <main className="flex flex-col justify-center items-center gap-4 w-full h-screen">
+    <main className="flex flex-col justify-center items-center gap-5 w-full h-screen">
       <motion.h1 className="max-500:text-sm" 
         initial={{ y: -100, opacity: 0 }}
         transition={{ duration: 0.25 }}
@@ -14,7 +14,7 @@ function Login() {
       </motion.h1>
 
       <motion.article
-        className="flex flex-col items-center bg-[#ececec9d] px-5 max-500:px-4 py-6 max-500:py-5 rounded-2xl"
+        className="flex flex-col items-center bg-[#ececec9d] px-5 max-500:px-4 py-6 max-500:py-5 rounded-2xl ring-[#FABB18] ring-1 ring-offset-5 ring-offset-white"
         initial={{ x: -350, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.25 }}
@@ -40,13 +40,13 @@ function Login() {
         <section className="flex flex-col justify-start w-75 max-500:w-62">
           <a 
             href="#"
-            className="m-0.5 text-blue-400 hover:text-blue-500 max-500:text-xs text-sm"
+            className="m-0.5 w-fit text-blue-400 hover:text-blue-500 max-500:text-xs text-sm"
           >
             فراموشی رمز عبور؟
           </a>
           <a 
             href="#"
-            className="m-0.5 text-blue-400 hover:text-blue-500 max-500:text-xs text-sm"
+            className="m-0.5 w-fit text-blue-400 hover:text-blue-500 max-500:text-xs text-sm"
           >
             ارتباط با پشتیبانی
           </a>
