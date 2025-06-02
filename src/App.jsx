@@ -5,10 +5,18 @@ import Home from "./pages/Home";
 import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
 import Settings from "./pages/Settings";
+import { getCarts } from "./services/getCarts";
+import { useEffect } from "react";
 
 const queryClient = new QueryClient();
 
 function App() {
+
+  useEffect(() => {
+    getCarts().then((data) => console.log(data));
+  }, []);
+
+  
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
