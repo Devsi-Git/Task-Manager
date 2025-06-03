@@ -1,3 +1,4 @@
+import { useUi } from "../../services/Uicontext";
 import Cart from "./Cart";
 //eslint-disable-next-line
 import { motion } from "motion/react";
@@ -23,6 +24,8 @@ const itemVarians = {
 };
 
 function TaskSection({ children }) {
+  const { setModal } = useUi();
+
   return (
     <motion.div
       variants={containerVarians}
@@ -32,7 +35,10 @@ function TaskSection({ children }) {
     >
       <span className="top-0 relative flex justify-between items-center w-full">
         <h4 className="320:text-sm 740:text-base"> {children} </h4>
-        <span className="hover:bg-[#ececec9c] p-1.5 rounded-2xl transition-all cursor-pointer">
+        <span
+          onClick={() => setModal(true)}
+          className="hover:bg-[#ececec9c] p-1.5 rounded-2xl transition-all cursor-pointer"
+        >
           <svg
             className="320:w-3 740:w-4"
             width="14"
