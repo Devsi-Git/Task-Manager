@@ -1,16 +1,23 @@
 import { useUi } from "../services/Uicontext";
 import Header from "../Components/home/Header";
 import TaskSection from "../Components/home/TaskSection";
-import Modal from "../Components/Modal";
+import Modal from "../Components/general/Modal";
+import Input from "../Components/general/Input";
 
 function Home() {
   const { modal } = useUi();
 
   return (
     <main className="flex flex-col w-screen">
-      <Modal styles=" fixed w-50 h-50 absolute " />
+      <Modal styles=" fixed ">
+        <Input placeholder={"موضوع فعالیت"} type={"text"} />
+        <textarea
+          placeholder="توضیحات این  فعالیت"
+          className="bg-[#fffdf1] px-3 py-2 rounded-xl focus:outline-0 focus:ring-[#FABB18] focus:ring-1 focus:ring-offset-[#F3F3F3] focus:ring-offset-2 w-70 max-500:w-55 placeholder:text-[#cecece] placeholder:text-xs transition-all"
+        ></textarea>
+      </Modal>
       {modal && (
-        <span className="z-16 fixed inset-0 bg-[#9797973d] backdrop-blur-[2px]"></span>
+        <span className="z-16 fixed inset-0 bg-[#9797974e] backdrop-blur-[2px]"></span>
       )}
       <Header />
       <article className="bg-[#ececec9d] 320:mr-1.5 740:mr-0 320:px-3 740:px-5 py-5 rounded-tr-4xl rounded-br-lg h-fit min-h-screen">
