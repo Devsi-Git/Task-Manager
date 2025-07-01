@@ -7,13 +7,13 @@ import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
 import Settings from "./pages/Settings";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({});
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <UiProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
           <Routes>
             <Route element={<AppLayout />}>
