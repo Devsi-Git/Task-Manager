@@ -1,4 +1,5 @@
-function Cart() {
+function Cart(data) {
+  console.log(data);
   return (
     <div className="flex flex-col bg-sky-200 hover:shadow-[0_0_10px] hover:shadow-sky-200 px-3 py-2 rounded-2xl rounded-tr-md min-w-50 cursor-pointer">
       <span className="flex justify-between items-center">
@@ -10,7 +11,9 @@ function Cart() {
         </h3>
       </span>
 
-      <h4 className="mr-3 text-gray-800 320:text-sm 740:text-base">موضوع فعالیت</h4>
+      <h4 className="mr-3 text-gray-800 320:text-sm 740:text-base">
+        موضوع فعالیت
+      </h4>
 
       <p className="my-2 text-gray-800 320:text-[13px] 740:text-sm">
         متن امتحانی نسبتا کوتاه برای توضیحات فعالیت و کارهایی که نیاره انجام بشن
@@ -18,7 +21,12 @@ function Cart() {
       </p>
 
       <span className="flex justify-end gap-0.5">
-        <svg className="320:w-3 740:w-3.5" width="14" height="14" viewBox="0 0 120 120">
+        <svg
+          className="320:w-3 740:w-3.5"
+          width="14"
+          height="14"
+          viewBox="0 0 120 120"
+        >
           <rect
             x="10"
             y="10"
