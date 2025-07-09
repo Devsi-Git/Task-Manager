@@ -1,7 +1,7 @@
 //eslint-disable-next-line
 import { motion } from "motion/react";
 import { useQuery } from "@tanstack/react-query";
-import { getCarts } from "../../services/getCarts";
+import { getCarts } from "../../services/apiCarts";
 import { useUi } from "../../services/Uicontext";
 import Cart from "./Cart";
 import Loader from "../general/Loader";
@@ -73,14 +73,17 @@ function TaskSection({ children }) {
         </span>
       </span>
       <div className="gap-3 grid 320:grid-cols-[200px_200px_200px] 740:grid-cols-1 max-740:overflow-x-scroll">
-        {isLoading ? (
+        {isLoading || carts === -1 ? (
           <Loader />
         ) : (
-          carts.map((cart) => (
-            <motion.span key={cart.id} variants={itemVarians}>
-              <Cart data={cart} key={cart.id} />
-            </motion.span>
-          ))
+          carts.map(
+            (cart) =>
+              cart.status === children && (
+                <motion.span key={cart.id} variants={itemVarians}>
+                  <Cart data={cart} />
+                </motion.span>
+              )
+          )
         )}
       </div>
     </motion.div>

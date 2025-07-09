@@ -5,6 +5,7 @@ export async function getCarts() {
 
   if (error) {
     console.error(error);
+    return -1
   }
   
   return data;
