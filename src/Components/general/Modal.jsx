@@ -10,13 +10,13 @@ function Modal({ styles, children }) {
       {modal && (
       
         <motion.div
-          className={`${styles} flex flex-col gap-2 w-fitt p-4 z-80 self-center rounded-2xl bg-amber-300`}
+          className={`${styles} `}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
         >
           <VscCloseAll
-            className="cursor-pointer"
+            className="mb-2 cursor-pointer"
             onClick={() => setModal(false)}
           />
           {children}
