@@ -1,28 +1,45 @@
-import { VscCloseAll } from "react-icons/vsc";
 //eslint-disable-next-line
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { useUi } from "../../services/Uicontext";
+import { useEffect, useRef } from "react";
 
 function Modal({ styles, children }) {
-  const { modal, setModal } = useUi();
+  const { setModalCart, setModalTask } = useUi();
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setModalCart(null);
+        setModalTask(false);
+      }
+    };
+    const handleEsc = (event) => {
+      if (event.key === "Escape") {
+        setModalTask(false);
+        setModalCart(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEsc);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEsc);
+    };
+  }, [setModalCart, setModalTask]);
+
   return (
-    <AnimatePresence>
-      {modal && (
-      
-        <motion.div
-          className={`${styles} `}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0 }}
-        >
-          <VscCloseAll
-            className="mb-2 cursor-pointer"
-            onClick={() => setModal(false)}
-          />
-          {children}
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <motion.div
+      ref={modalRef}
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0 }}
+      className={`${styles} `}
+    >
+      {children}
+    </motion.div>
   );
 }
 

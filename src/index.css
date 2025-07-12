@@ -15,3 +15,14 @@
     --breakpoint-990: 990px;
     --breakpoint-1020: 1020px;
 }
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* برای IE و Edge */
+    scrollbar-width: none;     /* برای Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* برای Chrome، Safari و Opera */
+  }
+}
