@@ -63,11 +63,9 @@ function Login() {
             </div>
           </section>
 
-          <Btn >
-            تایید مشخصات
-          </Btn>
+          <Btn>تایید مشخصات</Btn>
         </form>
-        <span className="flex bg-[#d2d2d2] mt-5 mb-2 rounded-2xl w-75 max-500:w-62 h-[1px]"></span>
+        <span className="flex bg-[#d2d2d2] mt-5 mb-2 rounded-2xl w-75 max-500:w-62 h-px"></span>
 
         <section className="flex flex-col justify-start w-75 max-500:w-62">
           <a

@@ -1,14 +1,16 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { delCart } from "../../services/apiCarts";
 import { useUi } from "../../services/Uicontext";
-import { CgClose } from "react-icons/cg";
+import { AnimatePresence } from "motion/react";
+import { TiDeleteOutline } from "react-icons/ti";
+import { BiEdit } from "react-icons/bi";
 import Loader from "../general/Loader";
 import Modal from "../general/Modal";
 
 function Cart({ data }) {
   const { setModalCart, modalCart } = useUi();
   const queryClinet = useQueryClient();
-  const { isPending } = useMutation({
+  const { isPending, mutate } = useMutation({
     mutationFn: delCart,
     onSuccess: () => {
       queryClinet.invalidateQueries({ queryKey: ["carts"] });
@@ -28,11 +30,28 @@ function Cart({ data }) {
         >
           ◦◦◦
         </button>
+        <AnimatePresence>
+          {modalCart === data.id && (
+            <Modal styles="absolute p-2 flex flex-col items-center w-33 z-80 shadow-lg rounded-2xl bg-amber-200">
+              <p
+                onClick={() => {
+                  mutate(data.id);
+                }}
+                className="flex justify-between hover:justify-around items-center p-1 w-full text-gray-700 text-sm cursor-pointer"
+              >
+                حذف فعالیت
+                <TiDeleteOutline />
+              </p>
 
-        {modalCart === data.id && (
-          <Modal styles=" p-4 z-80 rounded-2xl w-8 bg-amber-200"></Modal>
-        )}
+              <span className="flex bg-[#d2d17b] rounded-2xl w-[95%] max-500:w-62 h-px"></span>
 
+              <p className="flex justify-between hover:justify-around items-center p-1 w-full text-gray-700 text-sm cursor-pointer">
+                ویرایش فعالیت
+                <BiEdit />
+              </p>
+            </Modal>
+          )}
+        </AnimatePresence>
         <h3 className="text-[#929292] 320:text-xs 740:text-sm text-end">
           {data.createdAt.slice(0, 10)}
         </h3>
