@@ -3,14 +3,16 @@ import { createContext, useContext, useState } from "react";
 const UiContext = createContext();
 
 function UiProvider({ children }) {
+  const [menu, setMenu] = useState(false);
   const [modalTask, setModalTask] = useState(false);
   const [modalCart, setModalCart] = useState(null);
-  const [menu, setMenu] = useState(false);
-  
+  const [cartToEdit, setCartToEdit] = useState({});
 
   return (
     <UiContext.Provider
       value={{
+        setCartToEdit,
+        cartToEdit,
         modalTask,
         modalCart,
         setModalCart,

@@ -1,6 +1,7 @@
 import { useState } from "react";
 //eslint-disable-next-line
 import { motion } from "motion/react";
+import { IoSearchOutline } from "react-icons/io5";
 const menuVarians = {
   open: {},
   close: {},
@@ -54,26 +55,7 @@ function Header() {
         />
         <span className="600:left-7 740:left-10 990:left-0 relative bg-amber-300 740:p-2.5 600:px-2 600:py-1.5 rounded-xl overflow-hidden hover:scale-90 transition-all">
           <span className="top-0 right-0 hover:-right-25 absolute bg-linear-150 from-[#fff0] from-33% via-[#ffffff7c] via-45% to-[#fff0] to-58% rounded-xl w-34 h-full transition-all"></span>
-          <svg
-            className="600:w-3 740:w-3.5"
-            width="16"
-            height="18"
-            viewBox="0 0 18 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              opacity="0.3"
-              d="M11.5795 14.2955C11.1402 13.8562 11.1402 13.1438 11.5795 12.7045C12.0188 12.2652 12.7312 12.2652 13.1705 12.7045L17.6705 17.2045C18.1098 17.6438 18.1098 18.3562 17.6705 18.7955C17.2312 19.2348 16.5188 19.2348 16.0795 18.7955L11.5795 14.2955Z"
-              fill="black"
-            />
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M0 7.875C0 12.2242 3.52576 15.75 7.875 15.75C12.2242 15.75 15.75 12.2242 15.75 7.875C15.75 3.52576 12.2242 0 7.875 0C3.52576 0 0 3.52576 0 7.875ZM13.5 7.87501C13.5 10.9816 10.9816 13.5 7.87501 13.5C4.76841 13.5 2.25001 10.9816 2.25001 7.87501C2.25001 4.76841 4.76841 2.25001 7.87501 2.25001C10.9816 2.25001 13.5 4.76841 13.5 7.87501Z"
-              fill="black"
-            />
-          </svg>
+          <IoSearchOutline />
         </span>
       </div>
 

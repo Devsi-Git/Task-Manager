@@ -37,12 +37,12 @@ function TaskSection({ children }) {
 
   return (
     <motion.div
-      className="flex flex-col bg-[#fffdf1] rounded-xl min-h-30 max-h-140"
+      className="flex flex-col bg-[#fffdf1] rounded-xl min-h-30"
       variants={containerVarians}
       initial="hidden"
       animate="visiable"
     >
-      <span className="top-0 relative flex justify-between items-center p-4 w-full">
+      <span className="top-0 relative flex justify-between items-center p-4 pb-0 w-full">
         <h4 className="320:text-sm 740:text-base"> {children} </h4>
 
         <span
@@ -56,7 +56,7 @@ function TaskSection({ children }) {
         </span>
       </span>
 
-      <div className="gap-3 grid 320:grid-cols-[200px_200px_200px] 740:grid-cols-1 p-4 pt-0 max-740:overflow-x-scroll overflow-y-auto 740: 740:scrolhid scrollbar-hide">
+      <div className="gap-3 grid 320:grid-cols-[200px_200px_200px] 740:grid-cols-1 p-4 max-740:overflow-x-scroll overflow-y-auto scrollbar-hide">
         {isLoading || carts === -1 ? (
           <Loader />
         ) : (

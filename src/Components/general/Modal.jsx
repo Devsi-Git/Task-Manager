@@ -4,7 +4,7 @@ import { useUi } from "../../services/Uicontext";
 import { useEffect, useRef } from "react";
 
 function Modal({ styles, children }) {
-  const { setModalCart, setModalTask } = useUi();
+  const { setModalCart, setModalTask, setCartToEdit } = useUi();
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -12,6 +12,7 @@ function Modal({ styles, children }) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setModalCart(null);
         setModalTask(false);
+        setCartToEdit({});
       }
     };
     const handleEsc = (event) => {
@@ -28,7 +29,7 @@ function Modal({ styles, children }) {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleEsc);
     };
-  }, [setModalCart, setModalTask]);
+  }, [setModalCart, setModalTask, setCartToEdit]);
 
   return (
     <motion.div

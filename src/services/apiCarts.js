@@ -29,3 +29,17 @@ export async function delCart(id) {
   }
   return data;
 }
+
+export async function updateCart(newData, id) {
+  const { data, error } = await supabase
+    .from("carts")
+    .update(newData)
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    console.error(error);
+    return -1;
+  }
+  return data;
+}
