@@ -2,10 +2,10 @@
 import { motion } from "motion/react";
 import { useQuery } from "@tanstack/react-query";
 import { getCarts } from "../../services/apiCarts";
+import { FaPlus } from "react-icons/fa6";
 import { useUi } from "../../services/Uicontext";
 import Cart from "./Cart";
 import Loader from "../general/Loader";
-import { FaPlus } from "react-icons/fa6";
 
 const containerVarians = {
   hidden: {},
@@ -46,11 +46,11 @@ function TaskSection({ children }) {
         <h4 className="320:text-sm 740:text-base"> {children} </h4>
 
         <span
+          className="hover:bg-[#dadada8c] p-1.5 rounded-2xl transition-all cursor-pointer"
           onClick={() => {
             setModalTask(true);
             setModalCart(null);
           }}
-          className="hover:bg-[#ececec9c] p-1.5 rounded-2xl transition-all cursor-pointer"
         >
           <FaPlus />
         </span>

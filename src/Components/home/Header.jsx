@@ -1,51 +1,12 @@
-import { useState } from "react";
 //eslint-disable-next-line
 import { motion } from "motion/react";
 import { IoSearchOutline } from "react-icons/io5";
-const menuVarians = {
-  open: {},
-  close: {},
-};
-
-const menuItemVarians1 = {
-  open: { width: 16 },
-  closed: { width: 2 },
-};
-
-const menuItemVarians2 = {
-  open: { x: -4 },
-  closed: { x: 0 },
-};
-
-const menuItemVarians3 = {
-  open: { width: 8, x: -8 },
-  closed: { width: 4, x: 0 },
-};
+import BurgerMenu from "../menu/BurgerMenu";
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <header className="justify-between items-center grid 320:grid-cols-[5%_95%] 600:grid-cols-[10%_50%_40%] 740:grid-cols-[55%_45%] 320:mx-2 740:mr-8 py-4 text-center">
-      <motion.div
-        className="740:hidden z-10 flex flex-col space-y-0.5 bg-amber-300 mr-4 p-[7px] rounded-xl w-fit"
-        variants={menuVarians}
-        animate={isOpen ? "open" : "close"}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <motion.span
-          className="bg-black rounded-3xl w-2 h-0.5"
-          variants={menuItemVarians1}
-        ></motion.span>
-        <motion.span
-          className="bg-black rounded-3xl w-3 h-0.5"
-          variants={menuItemVarians2}
-        ></motion.span>
-        <motion.span
-          className="bg-black rounded-3xl w-4 h-0.5"
-          variants={menuItemVarians3}
-        ></motion.span>
-      </motion.div>
+      <BurgerMenu />
 
       <div className="320:hidden 600:flex items-center 740:gap-2">
         <input

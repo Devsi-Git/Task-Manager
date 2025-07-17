@@ -1,7 +1,10 @@
 import supabase from "./supabase";
 
 export async function getCarts() {
-  const { data, error } = await supabase.from("carts").select("*");
+  const { data, error } = await supabase
+    .from("carts")
+    .select("*")
+    .order("createdAt", { ascending: false });
 
   if (error) {
     console.error(error);

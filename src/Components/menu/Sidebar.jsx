@@ -1,9 +1,9 @@
-import SideBtn from "./SideBtn";
 // eslint-disable-next-line
 import { motion } from "framer-motion";
 import { RxDashboard } from "react-icons/rx";
 import { IoIosLogIn } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
+import SideBtn from "./SideBtn";
 
 const containerVariants = {
   hidden: {},
@@ -59,7 +59,7 @@ function Sidebar() {
         </motion.li>
 
         <motion.li className="list-none" variants={itemVariants}>
-          <SideBtn to="settings" icon={<IoSettingsOutline />}>
+          <SideBtn to="/" icon={<IoSettingsOutline />}>
             تنظیمات
           </SideBtn>
         </motion.li>

@@ -5,6 +5,7 @@ import { useUi } from "../../services/Uicontext";
 import Input from "../general/Input";
 import Loader from "../general/Loader";
 import Btn from "../general/Btn";
+import toast from "react-hot-toast";
 
 function AddTaskForm() {
   const queryClinet = useQueryClient();
@@ -19,6 +20,18 @@ function AddTaskForm() {
       queryClinet.invalidateQueries({ queryKey: ["carts"] });
       setModalTask(false);
       reset();
+      toast.success("با موفقیت اضافه شد", {
+        style: {
+          fontFamily: "Vazirmatn",
+          border: "1px solid #FABB18",
+          padding: "11px",
+          color: "#713200",
+        },
+        iconTheme: {
+          primary: "#FABB18",
+          secondary: "#fff",
+        },
+      });
     },
   });
 
@@ -28,6 +41,15 @@ function AddTaskForm() {
       queryClinet.invalidateQueries({ queryKey: ["carts"] });
       setModalTask(false);
       reset();
+      toast.success("با موفقیت ویرایش شد.", {
+        style: {
+          fontFamily: "Vazirmatn",
+          border: "1px solid #FABB18",
+          padding: "11px",
+          color: "#713200",
+        },
+        icon: "✍🏼",
+      });
     },
   });
 
@@ -42,7 +64,20 @@ function AddTaskForm() {
   }
 
   function onError(err) {
-    console.log(err);
+    const subjectErr = err.subject?.message;
+    const statusErr = err.status?.message;
+    toast.error(subjectErr || statusErr, {
+      style: {
+        fontFamily: "Vazirmatn",
+        border: "1px solid #713200",
+        padding: "11px",
+        color: "#713200",
+      },
+      iconTheme: {
+        primary: "#713200",
+        secondary: "#FFFAEE",
+      },
+    });
   }
 
   return (
@@ -54,10 +89,10 @@ function AddTaskForm() {
         placeholder={"موضوع فعالیت"}
         type="text"
         {...register("subject", {
-          required: "موضوع فعالیت نمیتواند خالی باشد",
+          required: "موضوع فعالیت نمیتواند خالی باشد.",
           validate: (value) => {
             return (
-              value.length <= 35 || "نام فعالیت میتواند حداکثر 35 کرکتر باشد."
+              value.length <= 35 || "نام فعالیت باید حداکثر 35 کرکتر باشد."
             );
           },
         })}
@@ -74,8 +109,15 @@ function AddTaskForm() {
         })}
         placeholder="توضیحات این  فعالیت"
       ></textarea>
+      
       <label className="flex space-x-3 mt-2 text-sm">
-        <input type="radio" value="برای انجام" {...register("status")} />
+        <input
+          type="radio"
+          value="برای انجام"
+          {...register("status", {
+            required: "لطفاً یکی از وضعیت‌ها را انتخاب کنید.",
+          })}
+        />
         <p>برای انجام</p>
       </label>
       <label className="flex space-x-3 text-sm">
