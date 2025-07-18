@@ -27,7 +27,7 @@ function SidebarMobile() {
     <AnimatePresence>
       {menu && (
         <motion.aside
-          className="740:hidden right-0 fixed flex flex-col items-center bg-amber-600 m-3 p-5 rounded-3xl h-lvh"
+          className="740:hidden right-0 z-30 fixed flex flex-col items-center bg-amber-200 m-3 p-5 rounded-3xl h-lvh"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}

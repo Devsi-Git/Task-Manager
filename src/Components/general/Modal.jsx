@@ -19,6 +19,7 @@ function Modal({ styles, children }) {
       if (event.key === "Escape") {
         setModalTask(false);
         setModalCart(null);
+        setCartToEdit({});
       }
     };
 
@@ -33,11 +34,11 @@ function Modal({ styles, children }) {
 
   return (
     <motion.div
+      className={styles}
       ref={modalRef}
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0 }}
-      className={`${styles} `}
     >
       {children}
     </motion.div>

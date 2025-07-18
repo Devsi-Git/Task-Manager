@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { useForm } from "react-hook-form";
 import Input from "../Components/general/Input";
 import Btn from "../Components/general/Btn";
+import BurgerMenu from "../Components/menu/BurgerMenu";
 function Login() {
   const { register, handleSubmit } = useForm();
 
@@ -12,6 +13,9 @@ function Login() {
 
   return (
     <main className="flex flex-col justify-center items-center gap-5 w-full h-screen">
+      <span className="top-5 right-3 z-40 fixed">
+        <BurgerMenu />
+      </span>
       <motion.h1
         className="max-500:text-sm"
         initial={{ y: -100, opacity: 0 }}
