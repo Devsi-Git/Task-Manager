@@ -5,12 +5,14 @@ import { IoIosLogIn } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
 import SideBtn from "./SideBtn";
 import { useUi } from "../../services/Uicontext";
+import Search from "../general/Search";
 
 const containerVariants = {
   hidden: {},
   visible: {
     transition: {
       staggerChildren: 0.2,
+      delayChildren: 0.25,
     },
   },
 };
@@ -27,13 +29,17 @@ function SidebarMobile() {
     <AnimatePresence>
       {menu && (
         <motion.aside
-          className="740:hidden right-0 z-30 fixed flex flex-col items-center bg-amber-200 m-3 p-5 rounded-3xl h-lvh"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 20 }}
+          className="740:hidden right-0 z-30 fixed flex flex-col items-center bg-amber-200 m-3 p-5 max-600:pt-12 rounded-3xl"
+          initial={{ opacity: 0, scale: 0, transformOrigin: "top right" }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
         >
+          <div className="600:hidden flex">
+            <Search />
+          </div>
+
           <svg
-            className="my-9 1020:w-31"
+            className="my-9 max-740:my-6 1020:w-31 max-740:w-21"
             width="110"
             height="27"
             viewBox="0 0 131 27"

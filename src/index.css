@@ -2,27 +2,31 @@
 @import "tailwindcss";
 
 @theme {
-    --font-vazir: "Vazirmatn", sans-serif;
+  --font-vazir: "Vazirmatn", sans-serif;
 }
 
 
 @theme {
-    --breakpoint-320: 320px;
-    --breakpoint-500: 500px;
-    --breakpoint-600: 600px;
-    --breakpoint-640: 640px;
-    --breakpoint-740: 740px;
-    --breakpoint-990: 990px;
-    --breakpoint-1020: 1020px;
+  --breakpoint-320: 320px;
+  --breakpoint-500: 500px;
+  --breakpoint-600: 600px;
+  --breakpoint-640: 640px;
+  --breakpoint-740: 740px;
+  --breakpoint-830: 830px;
+  --breakpoint-990: 990px;
+  --breakpoint-1020: 1020px;
 }
 
 @layer utilities {
   .scrollbar-hide {
-    -ms-overflow-style: none;  /* برای IE و Edge */
-    scrollbar-width: none;     /* برای Firefox */
+    -ms-overflow-style: none;
+    /* برای IE و Edge */
+    scrollbar-width: none;
+    /* برای Firefox */
   }
 
   .scrollbar-hide::-webkit-scrollbar {
-    display: none; /* برای Chrome، Safari و Opera */
+    display: none;
+    /* برای Chrome، Safari و Opera */
   }
 }

@@ -1,95 +1,15 @@
 //eslint-disable-next-line
-import { AnimatePresence, motion } from "motion/react";
-import { IoSearchOutline } from "react-icons/io5";
-import { useQuery } from "@tanstack/react-query";
-import { getCarts } from "../../services/apiCarts";
-import { useState } from "react";
+import { motion } from "motion/react";
+import Search from "../general/Search";
 import BurgerMenu from "../menu/BurgerMenu";
 
-const searchVariants = {
-  open: { opacity: 1, y: 0 },
-  close: { opacity: 0, y: -50 },
-};
-
 function Header() {
-  const [searchValue, setSearchValue] = useState("");
-  const [resultSubjects, setResultSubjects] = useState([]);
-  const { data: carts } = useQuery({
-    queryKey: ["carts"],
-    queryFn: getCarts,
-  });
-
-  function handleSearch(data) {
-    if (data.length > 0) {
-      const resultObj = carts.filter((cart) =>
-        cart.subject.toLowerCase().includes(data.toLowerCase())
-      );
-      const subjects = resultObj.map((item) => item.subject);
-
-      setResultSubjects(subjects);
-    } else {
-      setResultSubjects([]);
-    }
-
-    setSearchValue(data);
-  }
-
   return (
     <header className="justify-between items-center grid 320:grid-cols-[5%_95%] 600:grid-cols-[10%_50%_40%] 740:grid-cols-[55%_45%] 320:mx-2 740:mr-8 py-4 text-center">
       <BurgerMenu />
-
+      
       <div className="320:hidden 600:flex items-center 740:gap-2">
-        <input
-          className="bg-[#ececec9d] 990:mr-2 600:px-2 740:px-4 600:py-1 740:py-2 rounded-xl focus:outline-0 focus:ring-[#FABB18] focus:ring-1 focus:ring-offset-2 w-[60%] 740:focus:w-[100%] 740:w-[74%] focus:w-[80%] 600:placeholder:text-sm 740:placeholder:text-base transition-all"
-          type="text"
-          placeholder="جستجو نام فعالیت..."
-          value={searchValue}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-
-        <AnimatePresence>
-          {resultSubjects.length > 0 ? (
-            <>
-              <motion.ul
-                className="top-17 z-20 absolute flex flex-col gap-2 bg-[#f3f3f327] shadow-lg backdrop-blur-lg p-3 rounded-2xl w-fit overflow-hidden"
-                variants={searchVariants}
-                initial="close"
-                exit="close"
-                animate="open"
-              >
-                {resultSubjects.map((res, index) => (
-                  <motion.li
-                    className="bg-amber-200 p-2 rounded-xl ring-amber-300 hover:ring-2 text-sm transition-all cursor-pointer hover"
-                    key={index}
-                    variants={searchVariants}
-                    initial="close"
-                    exit="close"
-                    animate="open"
-                  >
-                    {res}
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </>
-          ) : (
-            searchValue.length > 0 && (
-              <motion.p
-                className="top-17 z-20 absolute flex flex-col gap-2 bg-[#f3f3f327] shadow-lg backdrop-blur-lg p-3 rounded-2xl w-fit overflow-hidden text-sm"
-                variants={searchVariants}
-                initial="close"
-                exit="close"
-                animate="open"
-              >
-                نتیجه ای یافت نشد
-              </motion.p>
-            )
-          )}
-        </AnimatePresence>
-
-        <span className="600:left-7 740:left-10 990:left-0 relative bg-amber-300 740:p-2.5 600:px-2 600:py-1.5 rounded-xl overflow-hidden hover:scale-90 transition-all">
-          <span className="top-0 right-0 hover:-right-25 absolute bg-linear-150 from-[#fff0] from-33% via-[#ffffff7c] via-45% to-[#fff0] to-58% rounded-xl w-34 h-full transition-all"></span>
-          <IoSearchOutline />
-        </span>
+        <Search />
       </div>
 
       <div className="flex justify-end items-center gap-3">

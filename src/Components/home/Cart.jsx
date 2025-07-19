@@ -7,6 +7,7 @@ import { BiEdit } from "react-icons/bi";
 import Loader from "../general/Loader";
 import Modal from "../general/Modal";
 import toast from "react-hot-toast";
+import jalaali from "jalaali-js";
 
 function Cart({ data }) {
   const queryClinet = useQueryClient();
@@ -28,9 +29,15 @@ function Cart({ data }) {
     },
   });
 
+  const date = new Date(data.createdAt);
+  const { jy, jm, jd } = jalaali.toJalaali(date);
+  const persianDate = `${jy}/${jm.toString().padStart(2, "0")}/${jd
+    .toString()
+    .padStart(2, "0")}`;
+
   return (
     <div className="flex flex-col bg-sky-200 hover:shadow-[0_0_10px] hover:shadow-sky-200 px-3 py-2 rounded-2xl rounded-tr-md min-w-50">
-      <span className="flex justify-between items-center">
+      <span className="relative flex justify-between items-center">
         <button
           className="hover:bg-[#ffffff90] px-1 rounded-2xl transition-all cursor-pointer"
           onClick={() => {
@@ -77,7 +84,7 @@ function Cart({ data }) {
         </AnimatePresence>
 
         <h3 className="text-[#929292] 320:text-xs 740:text-sm text-end">
-          {data.createdAt.slice(0, 10)}
+          {persianDate}
         </h3>
       </span>
 
