@@ -35,8 +35,12 @@ function Cart({ data }) {
     .toString()
     .padStart(2, "0")}`;
 
+   
   return (
-    <div className="flex flex-col bg-sky-200 hover:shadow-[0_0_10px] hover:shadow-sky-200 px-3 py-2 rounded-2xl rounded-tr-md min-w-50">
+    <div
+      id={`cart-${data.id}`}
+      className="flex flex-col bg-sky-200 hover:shadow-[0_0_10px] hover:shadow-sky-200 px-3 py-2 rounded-2xl rounded-tr-md min-w-50"
+    >
       <span className="relative flex justify-between items-center">
         <button
           className="hover:bg-[#ffffff90] px-1 rounded-2xl transition-all cursor-pointer"

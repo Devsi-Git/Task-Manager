@@ -8,20 +8,20 @@ function Modal({ styles, children }) {
   const modalRef = useRef(null);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    function handleClickOutside(event) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setModalCart(null);
         setModalTask(false);
         setCartToEdit({});
       }
-    };
-    const handleEsc = (event) => {
+    }
+    function handleEsc(event) {
       if (event.key === "Escape") {
         setModalTask(false);
         setModalCart(null);
         setCartToEdit({});
       }
-    };
+    }
 
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleEsc);

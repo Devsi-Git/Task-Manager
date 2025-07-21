@@ -1,6 +1,5 @@
 //eslint-disable-next-line
 import { AnimatePresence, motion } from "motion/react";
-import { IoSearchOutline } from "react-icons/io5";
 import { useQuery } from "@tanstack/react-query";
 import { getCarts } from "../../services/apiCarts";
 import { useState } from "react";
@@ -12,7 +11,7 @@ const searchVariants = {
 
 function Search() {
   const [searchValue, setSearchValue] = useState("");
-  const [resultSubjects, setResultSubjects] = useState([]);
+  const [resultSearch, setResultSearch] = useState([]);
   const { data: carts } = useQuery({
     queryKey: ["carts"],
     queryFn: getCarts,
@@ -20,16 +19,28 @@ function Search() {
 
   function handleSearch(data) {
     if (data.length > 0) {
-      const resultObj = carts.filter((cart) =>
+      const resultCart = carts.filter((cart) =>
         cart.subject.toLowerCase().includes(data.toLowerCase())
       );
-      const subjects = resultObj.map((item) => item.subject);
-
-      setResultSubjects(subjects);
+      setResultSearch(resultCart);
     } else {
-      setResultSubjects([]);
+      setResultSearch([]);
     }
     setSearchValue(data);
+  }
+
+  function handleBlur() {
+    setTimeout(() => {
+      setSearchValue("");
+      setResultSearch([]);
+    }, 50);
+  }
+
+  function scrollToCard(id) {
+    const el = document.getElementById(`cart-${id}`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 
   return (
@@ -40,9 +51,10 @@ function Search() {
         placeholder="جستجو نام فعالیت..."
         value={searchValue}
         onChange={(e) => handleSearch(e.target.value)}
+        onBlur={handleBlur}
       />
       <AnimatePresence>
-        {resultSubjects.length > 0 ? (
+        {resultSearch.length > 0 ? (
           <motion.ul
             className="top-17 max-600:top-21 max-740:top-15 z-20 absolute flex flex-col gap-2 bg-[#f3f3f327] shadow-lg backdrop-blur-lg max-600:mx-3 p-3 max-600:p-2 border-[#ffffff87] border-1 rounded-2xl w-fit overflow-hidden"
             variants={searchVariants}
@@ -50,19 +62,22 @@ function Search() {
             exit="close"
             animate="open"
           >
-            {resultSubjects.map((res, index) => (
+            {resultSearch.map((res) => (
               <li
-                className="bg-amber-200 p-2 rounded-xl ring-amber-300 hover:ring-2 max-600:text-xs text-sm text-nowrap transition-all cursor-pointer hover"
-                key={index}
+                className="bg-amber-200 p-2 rounded-xl ring-amber-300 hover:ring-2 min-w-20 600:min-w-30 max-600:text-xs max-990:text-sm text-center text-nowrap transition-all cursor-pointer hover"
+                key={res.id}
+                onClick={() => {
+                  scrollToCard(res.id);
+                }}
               >
-                {res}
+                {res.subject}
               </li>
             ))}
           </motion.ul>
         ) : (
           searchValue.length > 0 && (
             <motion.p
-              className="top-17 max-600:top-21 max-740:top-15 z-20 absolute flex flex-col gap-2 bg-[#f3f3f327] shadow-lg backdrop-blur-lg max-600:mx-3 p-3 max-600:p-2 border-[#ffffff87] border-1 rounded-xl w-fit overflow-hidden max-600:text-xs"
+              className="top-17 max-600:top-21 max-740:top-15 z-20 absolute flex flex-col gap-2 bg-[#f3f3f327] shadow-lg backdrop-blur-lg max-600:mx-3 p-3 max-600:p-2 border-[#ffffff87] border-1 rounded-xl w-fit overflow-hidden max-600:text-xs max-990:text-sm"
               variants={searchVariants}
               initial="close"
               exit="close"

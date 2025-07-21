@@ -4,11 +4,11 @@ import { useUi } from "../services/Uicontext";
 import Header from "../Components/home/Header";
 import TaskSection from "../Components/home/TaskSection";
 import Modal from "../Components/general/Modal";
-
 import AddTaskForm from "../Components/home/AddTaskForm";
 
 function Home() {
   const { modalTask } = useUi();
+  
 
   return (
     <main className="flex flex-col w-screen">
