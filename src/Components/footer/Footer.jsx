@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import Circle from "./circle";
+import Circle from "./Circle";
 import { MdEmail } from "react-icons/md";
 
 function Footer() {
