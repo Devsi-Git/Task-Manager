@@ -6,6 +6,8 @@ import { FaPlus } from "react-icons/fa6";
 import { useUi } from "../../services/Uicontext";
 import Cart from "./Cart";
 import Loader from "../general/Loader";
+import { useAuth } from "../../services/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const containerVarians = {
   hidden: {},
@@ -29,6 +31,17 @@ const itemVarians = {
 
 function TaskSection({ children }) {
   const { setModalTask, setModalCart } = useUi();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  function handleAddTaskClick() {
+    if (isAuthenticated) {
+      setModalTask(true);
+      setModalCart(null);
+    } else {
+      navigate("/Login");
+    }
+  }
 
   const { isLoading, data: carts } = useQuery({
     queryKey: ["carts"],
@@ -48,8 +61,7 @@ function TaskSection({ children }) {
         <span
           className="hover:bg-[#dadada8c] p-1.5 rounded-2xl transition-all cursor-pointer"
           onClick={() => {
-            setModalTask(true);
-            setModalCart(null);
+            handleAddTaskClick();
           }}
         >
           <FaPlus />

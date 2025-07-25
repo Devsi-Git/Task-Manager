@@ -4,11 +4,10 @@ import { useUi } from "../services/Uicontext";
 import Header from "../Components/home/Header";
 import TaskSection from "../Components/home/TaskSection";
 import Modal from "../Components/general/Modal";
-import AddTaskForm from "../Components/home/AddTaskForm";
+import TaskForm from "../Components/home/TaskForm";
 
 function Home() {
   const { modalTask } = useUi();
-  
 
   return (
     <main className="flex flex-col w-screen">
@@ -20,8 +19,8 @@ function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <Modal styles=" p-4 z-80 rounded-2xl bg-amber-200">
-              <AddTaskForm />
+            <Modal styles="p-5 z-80 rounded-2xl bg-amber-200">
+              <TaskForm />
             </Modal>
           </motion.div>
         )}

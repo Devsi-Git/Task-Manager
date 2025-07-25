@@ -7,7 +7,7 @@ import Loader from "../general/Loader";
 import Btn from "../general/Btn";
 import toast from "react-hot-toast";
 
-function AddTaskForm() {
+function TaskForm() {
   const queryClinet = useQueryClient();
   const { setModalTask, cartToEdit, setCartToEdit } = useUi();
   const { register, handleSubmit, reset } = useForm({
@@ -20,7 +20,7 @@ function AddTaskForm() {
       queryClinet.invalidateQueries({ queryKey: ["carts"] });
       setModalTask(false);
       reset();
-      toast.success("با موفقیت اضافه شد", {
+      toast.success("با موفقیت اضافه شد.", {
         style: {
           fontFamily: "Vazirmatn",
           border: "1px solid #FABB18",
@@ -82,7 +82,7 @@ function AddTaskForm() {
 
   return (
     <form
-      className="flex flex-col gap-2 w-fitt"
+      className="flex flex-col gap-3"
       onSubmit={handleSubmit(onSubmit, onError)}
     >
       <Input
@@ -109,28 +109,30 @@ function AddTaskForm() {
         })}
         placeholder="توضیحات این  فعالیت"
       ></textarea>
-      
-      <label className="flex space-x-3 mt-2 text-sm">
-        <input
-          type="radio"
-          value="برای انجام"
-          {...register("status", {
-            required: "لطفاً یکی از وضعیت‌ها را انتخاب کنید.",
-          })}
-        />
-        <p>برای انجام</p>
-      </label>
-      <label className="flex space-x-3 text-sm">
-        <input type="radio" value="درحال انجام" {...register("status")} />
-        <p>درحال انجام</p>
-      </label>
-      <label className="flex space-x-3 text-sm">
-        <input type="radio" value="انجام شده" {...register("status")} />
-        <p>انجام شده</p>
-      </label>
+      <div className="flex max-500:flex-col gap-3.5 max-500:gap-1 mx-auto my-2 max-500:my-1 max-500:mr-2 max-500:ml-0">
+        <label className="flex space-x-1 max-500:text-xs text-sm">
+          <input
+            type="radio"
+            value="برای انجام"
+            {...register("status", {
+              required: "لطفاً یکی از وضعیت‌ها را انتخاب کنید.",
+            })}
+          />
+          <p>برای انجام</p>
+        </label>
+        <label className="flex space-x-1 max-500:text-xs text-sm">
+          <input type="radio" value="درحال انجام" {...register("status")} />
+          <p>درحال انجام</p>
+        </label>
+        <label className="flex space-x-1 max-500:text-xs text-sm">
+          <input type="radio" value="انجام شده" {...register("status")} />
+          <p>انجام شده</p>
+        </label>
+      </div>
+
       {isCreating || isEditing ? <Loader /> : <Btn>ثبت فعالیت</Btn>}
     </form>
   );
 }
 
-export default AddTaskForm;
+export default TaskForm;

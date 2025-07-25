@@ -4,20 +4,24 @@ import { useUi } from "../../services/Uicontext";
 import { AnimatePresence } from "motion/react";
 import { LuTrash2 } from "react-icons/lu";
 import { BiEdit } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../services/AuthContext";
 import Loader from "../general/Loader";
 import Modal from "../general/Modal";
 import toast from "react-hot-toast";
 import jalaali from "jalaali-js";
 
 function Cart({ data }) {
+  const navigate = useNavigate();
   const queryClinet = useQueryClient();
+  const { isAuthenticated } = useAuth();
   const { setModalCart, modalCart, setModalTask, setCartToEdit } = useUi();
 
   const { isPending, mutate } = useMutation({
     mutationFn: delCart,
     onSuccess: () => {
       queryClinet.invalidateQueries({ queryKey: ["carts"] });
-      toast.success("با موفقیت حذف شد", {
+      toast.success("با موفقیت حذف شد.", {
         style: {
           fontFamily: "Vazirmatn",
           border: "1px solid #FABB18",
@@ -29,13 +33,29 @@ function Cart({ data }) {
     },
   });
 
+  function handleClick(action) {
+    if (isAuthenticated) {
+      switch (action) {
+        case "edit":
+          mutate(data.id);
+          break;
+        case "delet":
+          setCartToEdit(data);
+          setModalCart(null);
+          setModalTask(true);
+          break;
+      }
+    } else {
+      navigate("/Login");
+    }
+  }
+
   const date = new Date(data.createdAt);
   const { jy, jm, jd } = jalaali.toJalaali(date);
   const persianDate = `${jy}/${jm.toString().padStart(2, "0")}/${jd
     .toString()
     .padStart(2, "0")}`;
 
-   
   return (
     <div
       id={`cart-${data.id}`}
@@ -60,7 +80,7 @@ function Cart({ data }) {
                 <>
                   <span
                     onClick={() => {
-                      mutate(data.id);
+                      handleClick("edit");
                     }}
                     className="flex justify-between items-center p-1 w-full hover:w-[96%] text-gray-700 text-sm transition-all cursor-pointer"
                   >
@@ -72,9 +92,7 @@ function Cart({ data }) {
 
                   <span
                     onClick={() => {
-                      setCartToEdit(data);
-                      setModalCart(null);
-                      setModalTask(true);
+                      handleClick("delet");
                     }}
                     className="flex justify-between items-center p-1 w-full hover:w-[96%] text-gray-700 text-sm transition-all cursor-pointer"
                   >

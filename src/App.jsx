@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import Home from "./pages/Home";
 import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
+import { AuthProvider } from "./services/AuthContext";
 
 const queryClient = new QueryClient({});
 
@@ -16,15 +17,17 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <UiProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route element={<AppLayout />}>
-                <Route index element={<Navigate replace to="home" />} />
-                <Route path="home" element={<Home />} />
-                <Route path="login" element={<Login />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
+          <AuthProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route element={<AppLayout />}>
+                  <Route index element={<Navigate replace to="home" />} />
+                  <Route path="home" element={<Home />} />
+                  <Route path="login" element={<Login />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </AuthProvider>
         </UiProvider>
       </QueryClientProvider>
     </>

@@ -1,14 +1,68 @@
 //eslint-disable-next-line
 import { motion } from "motion/react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { signUpLogin } from "../services/apiUser";
 import Input from "../Components/general/Input";
 import Btn from "../Components/general/Btn";
 import BurgerMenu from "../Components/menu/BurgerMenu";
+import toast from "react-hot-toast";
+import Loader from "../Components/general/Loader";
+
 function Login() {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
-  function onSubmit(data) {
-    console.log(data);
+  const { mutate, isPending: isSigningUp } = useMutation({
+    mutationFn: ({ email, password, username }) =>
+      signUpLogin({ email, password, username }),
+
+    onSuccess: () => {
+      navigate("/home");
+      toast.success("با موفقیت وارد شدید.", {
+        style: {
+          fontFamily: "Vazirmatn",
+          border: "1px solid #FABB18",
+          padding: "11px",
+          color: "#713200",
+        },
+        iconTheme: {
+          primary: "#FABB18",
+          secondary: "#fff",
+        },
+      });
+    },
+    onError: () =>
+      toast.error("رمز عبور یا ایمیل نادرست است.", {
+        style: {
+          fontFamily: "Vazirmatn",
+          border: "1px solid #713200",
+          padding: "11px",
+          color: "#713200",
+        },
+        iconTheme: {
+          primary: "#713200",
+          secondary: "#FFFAEE",
+        },
+      }),
+  });
+
+  function onError(err) {
+    const usernameErr = err.username?.message;
+    const passwordErr = err.password?.message;
+    toast.error(usernameErr || passwordErr || "لطفا همه فیلد هارا پر کنید.", {
+      style: {
+        fontFamily: "Vazirmatn",
+        border: "1px solid #713200",
+        padding: "11px",
+        color: "#713200",
+      },
+      iconTheme: {
+        primary: "#713200",
+        secondary: "#FFFAEE",
+      },
+    });
   }
 
   return (
@@ -22,7 +76,7 @@ function Login() {
         transition={{ duration: 0.25 }}
         animate={{ y: 0, opacity: 1 }}
       >
-        در سایت ثبت نام/ ورود کن🗝️
+        در سایت ثبت نام کن🗝️
       </motion.h1>
 
       <motion.article
@@ -32,10 +86,10 @@ function Login() {
         transition={{ duration: 0.25 }}
       >
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(mutate, onError)}
           className="flex flex-col items-center"
         >
-          <section className="flex items-center gap-5 max-500:gap-3">
+          <section className="flex items-center gap-5 max-500:gap-3 mb-6">
             <div className="flex flex-col items-end gap-11 w-fit">
               <label className="max-500:text-sm" htmlFor="#username">
                 نام کاربری
@@ -51,23 +105,38 @@ function Login() {
             <div className="flex flex-col gap-7 max-500:gap-6">
               <Input
                 placeholder="میتونه هرچی باشه..."
-                type="text"
-                {...register("text")}
+                type="username"
+                {...register("username", {
+                  required: "لطفا همه فیلد هارا پر کنید.",
+                  validate: (value) => {
+                    return (
+                      value.length <= 16 ||
+                      "نام کاربری باید حداکثر 16 کرکتر باشد."
+                    );
+                  },
+                })}
               />
               <Input
                 placeholder="باید تاییدش کنی..."
                 type="email"
-                {...register("email")}
+                {...register("email", {
+                  required: "لطفا همه فیلد هارا پر کنید",
+                })}
               />
               <Input
                 placeholder="به کسی نگو..."
                 type="password"
-                {...register("password")}
+                {...register("password", {
+                  required: "لطفا همه فیلد هارا پر کنید",
+                  validate: (value) => {
+                    return value.length >= 6 || "رمز باید حداقل 6 کرکتر باشد.";
+                  },
+                })}
               />
             </div>
           </section>
 
-          <Btn>تایید مشخصات</Btn>
+          {isSigningUp ? <Loader /> : <Btn>تایید مشخصات</Btn>}
         </form>
         <span className="flex bg-[#d2d2d2] mt-5 mb-2 rounded-2xl w-75 max-500:w-62 h-px"></span>
 
