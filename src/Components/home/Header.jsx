@@ -54,10 +54,10 @@ function Header() {
               />
             </svg>
           </motion.span>
-          <span className="text-left">
-            <h3 className="320:text-sm 740:text-base text-nowrap">
+          <div className="text-left">
+            <p className="320:text-sm 740:text-base text-nowrap">
               {session.user.user_metadata.username}
-            </h3>
+            </p>
             <p
               className="flex justify-end items-center gap-1 text-[#8F8F8F] 740:text-[13px] hover:text-[#595959] 320:text-xs cursor-pointer"
               onClick={() => mutate()}
@@ -71,7 +71,7 @@ function Header() {
                 </>
               )}
             </p>
-          </span>
+          </div>
           <span className="flex justify-center items-center bg-[#FABB18] 320:ml-2 740:ml-0 990:ml-5 pt-1.5 rounded-full 320:w-[35px] 740:w-[45px] 990:w-[50px] 320:h-[35px] 740:h-[45px] 990:h-[50px] overflow-hidden">
             <img className="w-11" src="../../../assets/person1.svg "></img>
           </span>

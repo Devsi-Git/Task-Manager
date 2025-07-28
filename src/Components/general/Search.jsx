@@ -2,6 +2,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useQuery } from "@tanstack/react-query";
 import { getCarts } from "../../services/apiCarts";
+import { useUi } from "../../services/Uicontext";
 import { useState } from "react";
 
 const searchVariants = {
@@ -10,6 +11,7 @@ const searchVariants = {
 };
 
 function Search() {
+  const { setMenu } = useUi();
   const [searchValue, setSearchValue] = useState("");
   const [resultSearch, setResultSearch] = useState([]);
   const { data: carts } = useQuery({
@@ -68,6 +70,7 @@ function Search() {
                 key={res.id}
                 onClick={() => {
                   scrollToCard(res.id);
+                  setMenu(false);
                 }}
               >
                 {res.subject}

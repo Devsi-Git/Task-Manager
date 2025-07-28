@@ -55,8 +55,8 @@ function TaskSection({ children }) {
       initial="hidden"
       animate="visiable"
     >
-      <span className="top-0 relative flex justify-between items-center p-4 pb-0 w-full">
-        <h4 className="320:text-sm 740:text-base"> {children} </h4>
+      <div className="top-0 relative flex justify-between items-center p-4 pb-0 w-full">
+        <h2 className="320:text-sm 740:text-base"> {children} </h2>
 
         <span
           className="hover:bg-[#dadada8c] p-1.5 rounded-2xl transition-all cursor-pointer"
@@ -66,7 +66,7 @@ function TaskSection({ children }) {
         >
           <FaPlus />
         </span>
-      </span>
+      </div>
 
       <div className="gap-3 grid 320:grid-cols-[200px_200px_200px] 740:grid-cols-1 p-4 max-740:overflow-x-scroll overflow-y-auto scrollbar-hide">
         {isLoading || carts === -1 ? (
@@ -75,9 +75,9 @@ function TaskSection({ children }) {
           carts.map(
             (cart) =>
               cart.status === children && (
-                <motion.span key={cart.id} variants={itemVarians}>
+                <motion.div key={cart.id} variants={itemVarians}>
                   <Cart data={cart} />
-                </motion.span>
+                </motion.div>
               )
           )
         )}
