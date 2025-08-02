@@ -1,14 +1,21 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="rtl" class="dark">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    if (!localStorage.getItem("theme")) {
+      localStorage.setItem("theme", "light");
+    }
+
+    document.documentElement.classList.toggle("dark", localStorage.getItem("theme") === "dark");
+  </script>
   <title>Tasky</title>
 
 </head>
 
-<body>
+<body class="dark:bg-[#070F2B]">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

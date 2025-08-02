@@ -4,17 +4,17 @@ import { MdEmail } from "react-icons/md";
 
 function Footer() {
   return (
-    <footer className="flex flex-col items-center gap-6 bg-white mx-auto mt-10 mb-6 p-4 rounded-2xl w-fitt h-35">
-      <h4 className="text-[#6d6d6d] text-sm">contact us</h4>
+    <footer className="flex flex-col items-center gap-6 mx-auto mt-14 rounded-2xl w-fitt h-35">
+      <h4 className="text-[#6d6d6d] dark:text-[#9d9cc4] text-sm">contact us</h4>
       <div className="flex gap-5">
         <Circle address={"https://github.com/Devsi-Git"}>
-          <FaGithub />
+          <FaGithub className="dark:text-[#9290C3]" />
         </Circle>
         <Circle address={"mailto:yousefi.devsi@gmail.com"}>
-          <MdEmail />
+          <MdEmail className="dark:text-[#9290C3]" />
         </Circle>
         <Circle address={"https://github.com/Devsi-Git"}>
-          <FaLinkedin />
+          <FaLinkedin className="dark:text-[#9290C3]" />
         </Circle>
       </div>
     </footer>

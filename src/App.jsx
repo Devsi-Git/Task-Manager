@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
 import { AuthProvider } from "./services/AuthContext";
+import Settings from "./pages/settings";
 
 const queryClient = new QueryClient({});
 
@@ -24,6 +25,7 @@ function App() {
                   <Route index element={<Navigate replace to="home" />} />
                   <Route path="home" element={<Home />} />
                   <Route path="login" element={<Login />} />
+                  <Route path="settings" element={<Settings />} />
                 </Route>
               </Routes>
             </BrowserRouter>

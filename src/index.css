@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap");
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@plugin "daisyui";
 
 @theme {
   --font-vazir: "Vazirmatn", sans-serif;
@@ -20,13 +22,10 @@
 @layer utilities {
   .scrollbar-hide {
     -ms-overflow-style: none;
-    /* برای IE و Edge */
     scrollbar-width: none;
-    /* برای Firefox */
   }
 
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
-    /* برای Chrome، Safari و Opera */
   }
 }

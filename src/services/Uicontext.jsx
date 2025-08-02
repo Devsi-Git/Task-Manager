@@ -8,6 +8,16 @@ function UiProvider({ children }) {
   const [modalCart, setModalCart] = useState(null);
   const [cartToEdit, setCartToEdit] = useState({});
 
+  function setTheme(mode) {
+    if (mode === "light") {
+      localStorage.theme = "dark";
+      document.documentElement.classList.add("dark");
+    } else if (mode === "dark") {
+      localStorage.theme = "light";
+      document.documentElement.classList.remove("dark");
+    }
+  }
+
   return (
     <UiContext.Provider
       value={{
@@ -19,6 +29,7 @@ function UiProvider({ children }) {
         menu,
         setModalTask,
         setMenu,
+        setTheme,
       }}
     >
       {children}

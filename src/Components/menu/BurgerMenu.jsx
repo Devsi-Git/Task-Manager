@@ -27,21 +27,21 @@ function BurgerMenu() {
 
   return (
     <motion.div
-      className="740:hidden z-50 flex flex-col space-y-0.5 bg-amber-300 mr-4 p-[7px] rounded-xl w-fit"
+      className="740:hidden z-50 flex flex-col space-y-0.5 bg-amber-300 dark:bg-[#9290C3] mr-4 p-[7px] rounded-xl w-fit"
       variants={menuVarians}
       animate={menu ? "open" : "close"}
       onClick={() => setMenu(!menu)}
     >
       <motion.span
-        className="bg-black rounded-3xl w-2 h-0.5"
+        className="bg-black dark:bg-[#d8d4eb] rounded-3xl w-2 h-0.5"
         variants={menuItemVarians1}
       ></motion.span>
       <motion.span
-        className="bg-black rounded-3xl w-3 h-0.5"
+        className="bg-black dark:bg-[#d8d4eb] rounded-3xl w-3 h-0.5"
         variants={menuItemVarians2}
       ></motion.span>
       <motion.span
-        className="bg-black rounded-3xl w-4 h-0.5"
+        className="bg-black dark:bg-[#d8d4eb] rounded-3xl w-4 h-0.5"
         variants={menuItemVarians3}
       ></motion.span>
     </motion.div>

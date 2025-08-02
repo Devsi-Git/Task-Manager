@@ -10,6 +10,11 @@ import Loader from "../general/Loader";
 import Modal from "../general/Modal";
 import toast from "react-hot-toast";
 import jalaali from "jalaali-js";
+import {
+  PiDotsThreeOutline,
+  PiDotsThreeOutlineBold,
+  PiDotsThreeOutlineLight,
+} from "react-icons/pi";
 
 function Cart({ data }) {
   const navigate = useNavigate();
@@ -59,21 +64,21 @@ function Cart({ data }) {
   return (
     <div
       id={`cart-${data.id}`}
-      className="flex flex-col bg-sky-200 hover:shadow-[0_0_10px] hover:shadow-sky-200 px-3 py-2 rounded-2xl rounded-tr-md min-w-50"
+      className="flex flex-col bg-sky-200 dark:bg-[#8280be] shadow-sky-200 hover:shadow-[0_0_10px] dark:hover:shadow-[#9290C3] px-3 py-2 rounded-2xl rounded-tr-md min-w-50"
     >
       <div className="relative flex justify-between items-center">
         <button
-          className="hover:bg-[#ffffff90] px-1 rounded-2xl transition-all cursor-pointer"
+          className="hover:bg-[#ffffff90] dark:hover:bg-[#4d547890] p-1 rounded-2xl transition-all cursor-pointer"
           onClick={() => {
             setModalCart(data.id);
           }}
         >
-          ◦◦◦
+          <PiDotsThreeOutlineLight className="dark:text-[#ffffff]" />
         </button>
 
         <AnimatePresence>
           {modalCart === data.id && (
-            <Modal styles="absolute p-2 flex flex-col items-center w-33 z-80 shadow-lg rounded-2xl bg-amber-200">
+            <Modal styles="absolute p-2 flex flex-col items-center w-33 z-80 shadow-lg rounded-2xl dark:bg-[#535C91] bg-amber-200">
               {isPending ? (
                 <Loader />
               ) : (
@@ -82,19 +87,19 @@ function Cart({ data }) {
                     onClick={() => {
                       handleClick("edit");
                     }}
-                    className="flex justify-between items-center p-1 w-full hover:w-[96%] text-gray-700 text-sm transition-all cursor-pointer"
+                    className="flex justify-between items-center p-1 w-full hover:w-[96%] text-gray-700 dark:text-[#b8b4d1] text-sm transition-all cursor-pointer"
                   >
                     <p>حذف فعالیت</p>
                     <LuTrash2 />
                   </div>
 
-                  <span className="flex bg-[#d2d17b] rounded-2xl w-[93%] h-px"></span>
+                  <span className="flex bg-[#d2d17b] dark:bg-[#1B1A55] rounded-2xl w-[93%] h-px"></span>
 
                   <div
                     onClick={() => {
                       handleClick("delet");
                     }}
-                    className="flex justify-between items-center p-1 w-full hover:w-[96%] text-gray-700 text-sm transition-all cursor-pointer"
+                    className="flex justify-between items-center p-1 w-full hover:w-[96%] text-gray-700 dark:text-[#b8b4d1] text-sm transition-all cursor-pointer"
                   >
                     <p>ویرایش فعالیت</p>
                     <BiEdit />
@@ -107,17 +112,17 @@ function Cart({ data }) {
 
         <time
           dateTime={data.createdAt}
-          className="text-[#929292] 320:text-xs 740:text-sm text-end"
+          className="text-[#929292] dark:text-[#c7c3df] 320:text-xs 740:text-sm text-end"
         >
           {persianDate}
         </time>
       </div>
 
-      <h3 className="mr-3 text-gray-800 320:text-sm 740:text-base">
+      <h3 className="mr-3 text-gray-800 dark:text-[#e4e1f8] 320:text-sm 740:text-base">
         {data.subject}
       </h3>
 
-      <p className="my-2 text-gray-800 320:text-[13px] 740:text-sm">
+      <p className="my-2 text-gray-800 320:text-[13px] dark:text-[#e4e1f8] 740:text-sm">
         {data.description}
       </p>
 

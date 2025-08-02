@@ -50,21 +50,23 @@ function TaskSection({ children }) {
 
   return (
     <motion.div
-      className="flex flex-col bg-[#fffdf1] rounded-xl min-h-30"
+      className="flex flex-col bg-[#fffdf1] dark:bg-[#1B1A55] rounded-xl min-h-30"
       variants={containerVarians}
       initial="hidden"
       animate="visiable"
     >
       <div className="top-0 relative flex justify-between items-center p-4 pb-0 w-full">
-        <h2 className="320:text-sm 740:text-base"> {children} </h2>
+        <h2 className="dark:text-[#c7c3df] 320:text-sm 740:text-base">
+          {children}
+        </h2>
 
         <span
-          className="hover:bg-[#dadada8c] p-1.5 rounded-2xl transition-all cursor-pointer"
+          className="hover:bg-[#dadada8c] dark:hover:bg-[#5f678d90] p-1.5 rounded-2xl transition-all cursor-pointer"
           onClick={() => {
             handleAddTaskClick();
           }}
         >
-          <FaPlus />
+          <FaPlus className="dark:text-[#c7c3df]" />
         </span>
       </div>
 

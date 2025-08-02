@@ -99,7 +99,7 @@ function TaskForm() {
       />
       <textarea
         rows="4"
-        className="bg-[#fffdf1] px-3 py-2 rounded-xl focus:outline-0 focus:ring-[#FABB18] focus:ring-1 focus:ring-offset-[#F3F3F3] focus:ring-offset-2 w-70 max-500:w-55 placeholder:text-[#cecece] placeholder:text-xs text-sm transition-all scrollbar-hide"
+        className="bg-[#fffdf1] dark:bg-[#9290C3] px-3 py-2 rounded-xl focus:outline-0 focus:ring-[#FABB18] focus:ring-1 dark:focus:ring-[#9290C3] focus:ring-offset-2 dark:focus:ring-offset-[#535C91] dark:ring-offset-[#535C91]focus:ring-offset-[#F3F3F3] w-70 max-500:w-55 dark:placeholder:text-[#585786] dark:text-[#1B1A55] placeholder:text-[#cecece] placeholder:text-xs text-sm transition-all scrollbar-hide"
         {...register("description", {
           validate: (value) => {
             return (
@@ -110,7 +110,7 @@ function TaskForm() {
         placeholder="توضیحات این  فعالیت"
       ></textarea>
       <div className="flex max-500:flex-col gap-3.5 max-500:gap-1 mx-auto my-2 max-500:my-1 max-500:mr-2 max-500:ml-0">
-        <label className="flex space-x-1 max-500:text-xs text-sm">
+        <label className="flex space-x-1 max-500:text-xs text-sm cursor-pointer">
           <input
             type="radio"
             value="برای انجام"
@@ -118,15 +118,15 @@ function TaskForm() {
               required: "لطفاً یکی از وضعیت‌ها را انتخاب کنید.",
             })}
           />
-          <p>برای انجام</p>
+          <p className="dark:text-[#c7c3df]">برای انجام</p>
         </label>
-        <label className="flex space-x-1 max-500:text-xs text-sm">
+        <label className="flex space-x-1 max-500:text-xs text-sm cursor-pointer">
           <input type="radio" value="درحال انجام" {...register("status")} />
-          <p>درحال انجام</p>
+          <p className="dark:text-[#c7c3df]">درحال انجام</p>
         </label>
-        <label className="flex space-x-1 max-500:text-xs text-sm">
+        <label className="flex space-x-1 max-500:text-xs text-sm cursor-pointer">
           <input type="radio" value="انجام شده" {...register("status")} />
-          <p>انجام شده</p>
+          <p className="dark:text-[#c7c3df]">انجام شده</p>
         </label>
       </div>
 
