@@ -1,6 +1,6 @@
 //eslint-disable-next-line
 import { motion, scale } from "motion/react";
-import Toggle from "../Components/settings/toggle";
+import Toggle from "../Components/settings/ToggleTheme";
 import BurgerMenu from "../Components/menu/BurgerMenu";
 
 export default function Settings() {

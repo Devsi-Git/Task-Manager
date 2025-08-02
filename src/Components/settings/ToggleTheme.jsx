@@ -3,10 +3,6 @@ import { useUi } from "../../services/Uicontext";
 export default function Toggle() {
   const { setTheme } = useUi();
 
-  let check = () => {
-    localStorage.getItem("theme");
-  };
-
   return (
     <div className="flex items-center gap-2">
       <label className="font-sans text-gray-900 dark:text-[#c7c3df]">
