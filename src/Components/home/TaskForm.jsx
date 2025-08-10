@@ -65,8 +65,9 @@ function TaskForm() {
 
   function onError(err) {
     const subjectErr = err.subject?.message;
+    const descriptionErr = err.description?.message;
     const statusErr = err.status?.message;
-    toast.error(subjectErr || statusErr, {
+    toast.error(subjectErr || statusErr || descriptionErr, {
       style: {
         fontFamily: "Vazirmatn",
         border: "1px solid #713200",
@@ -97,37 +98,41 @@ function TaskForm() {
           },
         })}
       />
+
       <textarea
         rows="4"
-        className="bg-[#fffdf1] dark:bg-[#9290C3] px-3 py-2 rounded-xl focus:outline-0 focus:ring-[#FABB18] focus:ring-1 dark:focus:ring-[#9290C3] focus:ring-offset-2 dark:focus:ring-offset-[#535C91] dark:ring-offset-[#535C91]focus:ring-offset-[#F3F3F3] w-70 max-500:w-55 dark:placeholder:text-[#585786] dark:text-[#1B1A55] placeholder:text-[#cecece] placeholder:text-xs text-sm transition-all scrollbar-hide"
+        className="bg-[#fffdf1] dark:bg-[#9290C3] px-3 py-2 rounded-xl focus:outline-0 focus:ring-[#FABB18] focus:ring-1 dark:focus:ring-[#9290C3] focus:ring-offset-2 dark:focus:ring-offset-[#535C91] dark:ring-offset-[#535C91]focus:ring-offset-[#F3F3F3] w-70 max-420:w-55 max-500:w-65 dark:placeholder:text-[#585786] dark:text-[#1B1A55] placeholder:text-[#cecece] placeholder:text-xs text-sm transition-all scrollbar-hide"
         {...register("description", {
           validate: (value) => {
             return (
-              value.length <= 295 || "نام فعالیت میتواند حداکثر 35 کرکتر باشد."
+              value.length <= 295 || "توضیحات میتواند حداکثر 295 کرکتر باشد."
             );
           },
         })}
         placeholder="توضیحات این  فعالیت"
       ></textarea>
-      <div className="flex max-500:flex-col gap-3.5 max-500:gap-1 mx-auto my-2 max-500:my-1 max-500:mr-2 max-500:ml-0">
-        <label className="flex space-x-1 max-500:text-xs text-sm cursor-pointer">
-          <input
-            type="radio"
-            value="برای انجام"
-            {...register("status", {
-              required: "لطفاً یکی از وضعیت‌ها را انتخاب کنید.",
-            })}
-          />
-          <p className="dark:text-[#c7c3df]">برای انجام</p>
-        </label>
-        <label className="flex space-x-1 max-500:text-xs text-sm cursor-pointer">
-          <input type="radio" value="درحال انجام" {...register("status")} />
-          <p className="dark:text-[#c7c3df]">درحال انجام</p>
-        </label>
-        <label className="flex space-x-1 max-500:text-xs text-sm cursor-pointer">
-          <input type="radio" value="انجام شده" {...register("status")} />
-          <p className="dark:text-[#c7c3df]">انجام شده</p>
-        </label>
+
+      <div className="flex max-420:flex-col gap-3.5 max-420:gap-1 mx-auto my-2.5 max-420:my-1 max-420:mr-2 max-420:ml-0">
+        {[
+          { value: "برای انجام", label: "برای انجام" },
+          { value: "درحال انجام", label: "درحال انجام" },
+          { value: "انجام شده", label: "انجام شده" },
+        ].map((item) => (
+          <label
+            key={item.value}
+            className="flex items-center space-x-1 max-500:text-xs text-sm cursor-pointer"
+          >
+            <input
+              type="radio"
+              value={item.value}
+              {...register("status", {
+                required: "لطفاً یکی از وضعیت‌ها را انتخاب کنید.",
+              })}
+              className="bg-white checked:bg-amber-500 border-2 border-gray-300 checked:border-amber-300 rounded-full w-4 h-4 transition-colors duration-200 appearance-none"
+            />
+            <p className="dark:text-[#c7c3df]">{item.label}</p>
+          </label>
+        ))}
       </div>
 
       {isCreating || isEditing ? <Loader /> : <Btn>ثبت فعالیت</Btn>}

@@ -1,5 +1,3 @@
-//eslint-disable-next-line
-import { motion } from "motion/react";
 import { signUpLogin } from "../../services/apiUser";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
@@ -66,90 +64,66 @@ export default function LoginForm() {
   }
 
   return (
-    <motion.article
-      className="flex flex-col items-center bg-[#ececec9d] dark:bg-[#535C91] px-5 max-500:px-4 py-6 max-500:py-5 rounded-2xl ring-[#FABB18] ring-1 dark:ring-[#9290C3] ring-offset-5 ring-offset-white dark:ring-offset-[#070F2B]"
-      initial={{ x: -270, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.25 }}
+    <form
+      onSubmit={handleSubmit(mutate, onError)}
+      className="flex flex-col items-center"
     >
-      <form
-        onSubmit={handleSubmit(mutate, onError)}
-        className="flex flex-col items-center"
-      >
-        <section className="flex items-center gap-5 max-500:gap-3 mb-6">
-          <div className="flex flex-col items-end gap-11 w-fit">
-            <label
-              className="dark:text-[#c7c3df] max-500:text-sm"
-              htmlFor="#username"
-            >
-              نام کاربری
-            </label>
-            <label
-              className="dark:text-[#c7c3df] max-500:text-sm"
-              htmlFor="#email"
-            >
-              ایمیل
-            </label>
-            <label
-              className="dark:text-[#c7c3df] max-500:text-sm"
-              htmlFor="#password"
-            >
-              رمز ورود
-            </label>
-          </div>
+      <section className="flex items-center gap-5 max-500:gap-3 mb-6">
+        <div className="flex flex-col items-end gap-11 max-420:gap-11 max-740:gap-11 w-fit">
+          <label
+            className="dark:text-[#c7c3df] max-420:text-xs max-500:text-sm"
+            htmlFor="#username"
+          >
+            نام کاربری
+          </label>
+          <label
+            className="dark:text-[#c7c3df] max-420:text-xs max-500:text-sm"
+            htmlFor="#email"
+          >
+            ایمیل
+          </label>
+          <label
+            className="dark:text-[#c7c3df] max-420:text-xs max-500:text-sm"
+            htmlFor="#password"
+          >
+            رمز ورود
+          </label>
+        </div>
 
-          <div className="flex flex-col gap-7 max-500:gap-6">
-            <Input
-              placeholder="میتونه هرچی باشه..."
-              type="username"
-              {...register("username", {
-                required: "لطفا همه فیلد هارا پر کنید.",
-                validate: (value) => {
-                  return (
-                    value.length <= 16 ||
-                    "نام کاربری باید حداکثر 16 کرکتر باشد."
-                  );
-                },
-              })}
-            />
-            <Input
-              placeholder="باید تاییدش کنی..."
-              type="email"
-              {...register("email", {
-                required: "لطفا همه فیلد هارا پر کنید",
-              })}
-            />
-            <Input
-              placeholder="به کسی نگو..."
-              type="password"
-              {...register("password", {
-                required: "لطفا همه فیلد هارا پر کنید",
-                validate: (value) => {
-                  return value.length >= 6 || "رمز باید حداقل 6 کرکتر باشد.";
-                },
-              })}
-            />
-          </div>
-        </section>
-
-        {isSigningUp ? <Loader /> : <Btn>تایید مشخصات</Btn>}
-      </form>
-      <span className="flex bg-[#d2d2d2] dark:bg-[#070f2b92] mt-5 mb-2 rounded-2xl w-75 max-500:w-62 h-px"></span>
-
-      <section className="flex flex-col justify-start w-75 max-500:w-62">
-        <a
-          href="#"
-          className="m-0.5 w-fit text-blue-400 hover:text-blue-500 dark:hover:text-[#9290C3] dark:text-[#070F2B] max-500:text-xs text-sm"
-        >
-          فراموشی رمز عبور؟
-        </a>
-        <a
-          href="#"
-          className="m-0.5 w-fit text-blue-400 hover:text-blue-500 dark:hover:text-[#9290C3] dark:text-[#070F2B] max-500:text-xs text-sm"
-        >
-          ارتباط با پشتیبانی
-        </a>
+        <div className="flex flex-col gap-7 max-500:gap-6">
+          <Input
+            placeholder="میتونه هرچی باشه..."
+            type="username"
+            {...register("username", {
+              required: "لطفا همه فیلد هارا پر کنید.",
+              validate: (value) => {
+                return (
+                  value.length <= 16 || "نام کاربری باید حداکثر 16 کرکتر باشد."
+                );
+              },
+            })}
+          />
+          <Input
+            placeholder="باید تاییدش کنی..."
+            type="email"
+            {...register("email", {
+              required: "لطفا همه فیلد هارا پر کنید",
+            })}
+          />
+          <Input
+            placeholder="به کسی نگو..."
+            type="password"
+            {...register("password", {
+              required: "لطفا همه فیلد هارا پر کنید",
+              validate: (value) => {
+                return value.length >= 6 || "رمز باید حداقل 6 کرکتر باشد.";
+              },
+            })}
+          />
+        </div>
       </section>
-    </motion.article>
+
+      {isSigningUp ? <Loader /> : <Btn>تایید مشخصات</Btn>}
+    </form>
   );
 }

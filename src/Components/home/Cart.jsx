@@ -64,7 +64,7 @@ function Cart({ data }) {
   return (
     <div
       id={`cart-${data.id}`}
-      className="flex flex-col bg-sky-200 dark:bg-[#8280be] shadow-sky-200 hover:shadow-[0_0_10px] dark:hover:shadow-[#9290C3] px-3 py-2 rounded-2xl rounded-tr-md min-w-50"
+      className="flex flex-col bg-sky-200 dark:bg-[#8280be] shadow-sky-200 hover:shadow-[0_0_10px] dark:hover:shadow-[#9290C3] px-3 py-2 rounded-2xl rounded-tr-md min-w-50 break-words"
     >
       <div className="relative flex justify-between items-center">
         <button
@@ -118,19 +118,19 @@ function Cart({ data }) {
         </time>
       </div>
 
-      <h3 className="mr-3 text-gray-800 dark:text-[#e4e1f8] 320:text-sm 740:text-base">
+      <h3 className="mr-3 dark:text-[#e4e1f8] 320:text-sm 740:text-base">
         {data.subject}
       </h3>
 
-      <p className="my-2 text-gray-800 320:text-[13px] dark:text-[#e4e1f8] 740:text-sm">
+      <p className="my-2 320:text-[13px] dark:text-[#e4e1f8] 740:text-sm">
         {data.description}
       </p>
 
       {/* <span className="flex justify-end -space-x-0.5">
-        <BiCheckbox className="text-gray-800-" />
-        <TiInputChecked className="text-gray-800-" />
-        <TiInputChecked className="text-gray-800-" />
-        <TiInputChecked className="text-gray-800-" />
+        <BiCheckbox className="-" />
+        <TiInputChecked className="-" />
+        <TiInputChecked className="-" />
+        <TiInputChecked className="-" />
       </span> */}
     </div>
   );

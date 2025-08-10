@@ -10,7 +10,7 @@ function Home() {
   const { modalTask } = useUi();
 
   return (
-    <main className="flex flex-col w-screen">
+    <div className="flex flex-col w-screen">
       <AnimatePresence>
         {modalTask && (
           <motion.div
@@ -19,7 +19,7 @@ function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <Modal styles="p-5 z-80 rounded-2xl dark:bg-[#535C91] bg-amber-200">
+            <Modal styles="p-5 max-500:p-3.5 z-80 rounded-2xl dark:bg-[#535C91] bg-amber-200">
               <TaskForm />
             </Modal>
           </motion.div>
@@ -28,7 +28,7 @@ function Home() {
 
       <Header />
 
-      <article className="bg-[#ececec9d] dark:bg-[#535C91] 320:mr-1.5 740:mr-0 320:px-3 740:px-5 py-5 rounded-tr-4xl rounded-br-lg h-fit min-h-screen">
+      <main className="bg-[#ececec9d] dark:bg-[#535C91] 320:mr-1.5 740:mr-0 320:px-3 740:px-5 py-5 rounded-tr-4xl rounded-br-lg h-fit min-h-screen">
         <h1 className="mr-3 mb-5 dark:text-[#c7c3df] 320:text-sm 740:text-base">
           آماده ای همه تسک هارو بترکونی؟ 😍
         </h1>
@@ -38,8 +38,8 @@ function Home() {
           <TaskSection>درحال انجام</TaskSection>
           <TaskSection>انجام شده</TaskSection>
         </section>
-      </article>
-    </main>
+      </main>
+    </div>
   );
 }
 

@@ -6,7 +6,7 @@ import Footer from "../Components/footer/Footer";
 function AppLayout() {
   return (
     <>
-      <div className="flex flex-row-reverse mx-auto max-w-[1345px] font-vazir">
+      <div className="flex flex-row-reverse font-vazir">
         <Outlet />
         <SidebarMobile />
         <Sidebar />

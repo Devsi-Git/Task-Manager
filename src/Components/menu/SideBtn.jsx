@@ -1,8 +1,10 @@
 // eslint-disable-next-line
 import { motion } from "motion/react";
 import { NavLink } from "react-router-dom";
+import { useUi } from "../../services/Uicontext";
 
 function SideBtn({ children, icon, to }) {
+  const { setMenu } = useUi();
   function isActiveHandle(isActive) {
     let styles;
     if (isActive) {
@@ -17,7 +19,11 @@ function SideBtn({ children, icon, to }) {
   }
 
   return (
-    <NavLink to={to} className={({ isActive }) => isActiveHandle(isActive)}>
+    <NavLink
+      onClick={() => setMenu(false)}
+      to={to}
+      className={({ isActive }) => isActiveHandle(isActive)}
+    >
       {children}
       {icon}
       <motion.span
